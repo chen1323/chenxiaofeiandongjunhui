@@ -1,0 +1,9 @@
+=== Ensemble CDE Evaluation ===
+Target: pub_top_5pct
+ROC-AUC: 0.8232
+F1-Score: 0.3448
+===============================
+
+Computing SHAP values... This may take a moment.
+Saved SHAP summary plot to shap_summary_CDE_ensemble.png
+

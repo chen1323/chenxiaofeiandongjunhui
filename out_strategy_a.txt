@@ -1,0 +1,45 @@
+/Users/xiaofeichen/opt/anaconda3/envs/myenv/lib/python3.10/site-packages/google/api_core/_python_version_support.py:273: FutureWarning: You are using a Python version (3.10.18) which Google will stop supporting in new releases of google.api_core once it reaches its end of life (2026-10-04). Please upgrade to the latest Python version, or at least Python 3.11, to continue receiving updates for google.api_core past that date.
+  warnings.warn(message, FutureWarning)
+/Users/xiaofeichen/Downloads/chenxiaofeiandongjunhui/llm_prob_multiplier.py:6: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as genai
+
+Running Refactored Strategy A: Continuous Probability Multiplier...
+
+Executing Semantic Confidence Multiplier on Top 20...
+  ID 494 (Vanilla Rank 1) -> W_sem: 0.60
+  ID 513 (Vanilla Rank 2) -> W_sem: 0.60
+  ID 510 (Vanilla Rank 3) -> W_sem: 0.90
+  ID 546 (Vanilla Rank 4) -> W_sem: 0.60
+  ID 537 (Vanilla Rank 5) -> W_sem: 0.70
+  ID 475 (Vanilla Rank 6) -> W_sem: 0.60
+  ID 501 (Vanilla Rank 7) -> W_sem: 0.70
+  ID 561 (Vanilla Rank 8) -> W_sem: 0.60
+  ID 439 (Vanilla Rank 9) -> W_sem: 1.00
+  ID 459 (Vanilla Rank 10) -> W_sem: 0.60
+  ID 496 (Vanilla Rank 11) -> W_sem: 0.60
+  ID 554 (Vanilla Rank 12) -> W_sem: 0.60
+  ID 538 (Vanilla Rank 13) -> W_sem: 0.60
+  ID 493 (Vanilla Rank 14) -> W_sem: 0.70
+  ID 452 (Vanilla Rank 15) -> W_sem: 0.90
+  ID 505 (Vanilla Rank 16) -> W_sem: 0.70
+  ID 512 (Vanilla Rank 17) -> W_sem: 0.60
+  ID 449 (Vanilla Rank 18) -> W_sem: 1.00
+  ID 442 (Vanilla Rank 19) -> W_sem: 0.70
+  ID 548 (Vanilla Rank 20) -> W_sem: 1.00
+
+==================================================
+ STRATEGY A: PROBABILITY MULTIPLIER METRICS
+==================================================
+Precision@K: 50.00%
+NDCG@K: 52.75%
+LIFT: 1091.67%
+ROC-AUC: 91.60%
+F1-Score: 50.00%
+

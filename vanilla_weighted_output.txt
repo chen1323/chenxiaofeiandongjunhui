@@ -1,0 +1,20 @@
+Loading data...
+
+Processing feature set C...
+Best C for C: 1 (Validation AUC: 0.9882)
+
+Processing feature set D...
+Best C for D: 1 (Validation AUC: 0.8431)
+
+Processing feature set E...
+Best C for E: 0.1 (Validation AUC: 0.8392)
+
+--- Late Fusion (CDE Ensemble) ---
+
+Final Metrics:
+Precision@K: 50.00%
+NDCG@K: 55.00%
+LIFT: 1091.67%
+ROC-AUC: 95.47%
+Exported final predictions to vanilla_ipw_predictions_weighted_2018.csv
+

@@ -1,0 +1,43 @@
+
+--- Top 8 Candidates (CDE Ensemble) ---
+ID: 494.0 | Score: 0.6858 | True: 0.0 -> FALSE POSITIVE
+   Features: Placerank=1.0, Research_Oriented=1.0, Bachelor_top=0.0
+ID: 546.0 | Score: 0.6856 | True: 1.0 -> TRUE POSITIVE
+   Features: Placerank=48.0, Research_Oriented=1.0, Bachelor_top=1.0
+ID: 537.0 | Score: 0.6457 | True: 1.0 -> TRUE POSITIVE
+   Features: Placerank=4.0, Research_Oriented=1.0, Bachelor_top=0.0
+ID: 508.0 | Score: 0.6188 | True: 0.0 -> FALSE POSITIVE
+   Features: Placerank=78.0, Research_Oriented=1.0, Bachelor_top=1.0
+ID: 554.0 | Score: 0.6077 | True: 1.0 -> TRUE POSITIVE
+   Features: Placerank=4.0, Research_Oriented=1.0, Bachelor_top=1.0
+ID: 513.0 | Score: 0.5988 | True: 0.0 -> FALSE POSITIVE
+   Features: Placerank=0.0, Research_Oriented=1.0, Bachelor_top=0.0
+ID: 459.0 | Score: 0.5936 | True: 0.0 -> FALSE POSITIVE
+   Features: Placerank=0.0, Research_Oriented=0.0, Bachelor_top=0.0
+ID: 516.0 | Score: 0.5916 | True: 0.0 -> FALSE POSITIVE
+   Features: Placerank=38.0, Research_Oriented=1.0, Bachelor_top=1.0
+
+--- IPW Weights Investigation ---
+Top Positive Coefs for Research_Oriented:
+provide abstract                  0.845709
+had non-academic work             0.487856
+PrimaryResearchArea_auditing      0.402904
+Bachelor_top                      0.300818
+number of top published papers    0.291982
+dtype: float64
+
+Top Negative Coefs for Research_Oriented:
+has Master honor                -0.573543
+number of published papers      -0.506940
+PrimaryResearchArea_financial   -0.431392
+has Bachelor honor              -0.368660
+coauthor_top                    -0.292652
+dtype: float64
+
+--- Training Candidates with Highest IPW Weights ---
+ID: 237.0 | Weight: 4.42 | Research_Oriented: 0.0 | Placerank: 58.0
+ID: 96.0 | Weight: 4.42 | Research_Oriented: 1.0 | Placerank: 0.0
+ID: 98.0 | Weight: 4.42 | Research_Oriented: 1.0 | Placerank: 0.0
+ID: 290.0 | Weight: 4.42 | Research_Oriented: 1.0 | Placerank: 0.0
+ID: 3.0 | Weight: 4.42 | Research_Oriented: 0.0 | Placerank: 53.0
+

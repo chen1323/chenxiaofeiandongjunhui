@@ -1,0 +1,52 @@
+/Users/xiaofeichen/opt/anaconda3/envs/myenv/lib/python3.10/site-packages/google/api_core/_python_version_support.py:273: FutureWarning: You are using a Python version (3.10.18) which Google will stop supporting in new releases of google.api_core once it reaches its end of life (2026-10-04). Please upgrade to the latest Python version, or at least Python 3.11, to continue receiving updates for google.api_core past that date.
+  warnings.warn(message, FutureWarning)
+/Users/xiaofeichen/Downloads/chenxiaofeiandongjunhui/llm_dual_track_prompting.py:8: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as genai
+/Users/xiaofeichen/opt/anaconda3/envs/myenv/lib/python3.10/site-packages/huggingface_hub/file_download.py:949: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Some parameters are on the meta device because they were offloaded to the disk.
+
+Loading GPT-2 Large for Track A...
+Loading Candidate Mapping...
+
+Processing Candidate 1: Sehwa Kim
+  Gemini CoT: As a strict accounting faculty recruiter in 2018, I evaluate this Job Market Paper (JMP) purely on i...
+  True Label: 0 | GPT-2 Pred: 0.0 | Gemini Pred: 0.92
+
+Processing Candidate 2: Anya Nakhmurina
+  Gemini CoT: As a strict accounting faculty recruiter in 2018, I evaluate this job market paper purely on its mer...
+  True Label: 0 | GPT-2 Pred: 0.0 | Gemini Pred: 0.95
+
+Processing Candidate 3: Ruby Lee
+  Gemini CoT: As a strict accounting recruiter in 2018, I evaluate this Job Market Paper (JMP) based purely on its...
+  True Label: 0 | GPT-2 Pred: 0.0 | Gemini Pred: 0.00
+
+Processing Candidate 4: Jody Grewal
+  Gemini CoT: As a strict accounting faculty recruiter in 2018, I evaluate this Job Market Paper (JMP) purely on i...
+  True Label: 1 | GPT-2 Pred: 0.0 | Gemini Pred: 0.88
+
+Processing Candidate 5: June Woo Park
+  Gemini CoT: As a strict accounting faculty recruiter in 2018, I evaluate this candidate's potential to be in the...
+  True Label: 0 | GPT-2 Pred: 0.0 | Gemini Pred: 0.00
+
+--- Metrics for Track A (Pre-2018 GPT-2) ---
+Precision@1: 0.00%
+NDCG@1: 0.00%
+LIFT: 0.00%
+ROC-AUC: 50.00%
+F1-Score: 0.00%
+
+--- Metrics for Track B (Modern Gemini Flash) ---
+Precision@1: 0.00%
+NDCG@1: 0.00%
+LIFT: 0.00%
+ROC-AUC: 50.00%
+F1-Score: 0.00%
+

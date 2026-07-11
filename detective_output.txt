@@ -1,0 +1,35 @@
+/Users/xiaofeichen/opt/anaconda3/envs/myenv/lib/python3.10/site-packages/google/api_core/_python_version_support.py:273: FutureWarning: You are using a Python version (3.10.18) which Google will stop supporting in new releases of google.api_core once it reaches its end of life (2026-10-04). Please upgrade to the latest Python version, or at least Python 3.11, to continue receiving updates for google.api_core past that date.
+  warnings.warn(message, FutureWarning)
+/Users/xiaofeichen/Downloads/chenxiaofeiandongjunhui/causal_data_detective.py:6: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as genai
+
+
+Processing Folder: 2126 - Sehwa Kim
+Failed to generate/parse JSON: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods.
+
+Processing Folder: 2127 - Anya Nakhmurina
+Failed to generate/parse JSON: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods.
+
+Processing Folder: 2129 - Ruby Lee
+Failed to generate/parse JSON: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods.
+
+Processing Folder: 2138 - Jody Grewal
+Failed to generate/parse JSON: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods.
+
+Processing Folder: 2162 - June Woo Park
+Failed to generate/parse JSON: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods.
+
+--- CSV Metadata Available (Sample) ---
+     research_oriented  year  Num_Pub  Num_Pub_Weighted  gender  has Bachelor honor  has Master honor  has PhD honor  number of R&R papers  number of papers in progress  has_coauthor  has_reference  number of coauthors  number of presentations  number of teaching experiences  number of awards  number of reviewers  number of membership  number of working experiences  had academic work  had non-academic work  provide abstract  PrimaryResearchArea_financial  PrimaryResearchArea_auditing  PrimaryResearchArea_managerial  PrimaryResearchArea_tax  PrimaryResearchMethod_archival  PrimaryResearchMethod_experiment  PrimaryResearchMethod_analytical  multi_language  coauthor_mean  coauthor_high  number_of_coauthor_2degree  reference_first  reference_mean  reference_high  second_language_asia  second_language_euro  Placerank
+ID                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+439                  1  2018        2          0.023535       1                   1                 0              0                     1                             3             1              1                    4                        9                               4                 8                    2                     0                              3                  0                      1                 0                              1                             0                               0                        0                               1                                 0                                 0               0    1414.250000             69                          34              752      729.000000             159                     0                     0          9
+440                  1  2018        1          0.004757       0                   0                 0              0                     0                             2             1              1                    3                       11                               2                 6                    1                     0                              3                  1                      1                 1                              1                             0                               0                        0                               1                                 0                                 0               0    1780.000000             69                          27              430      828.333333              69                     0                     0          9
+441                  1  2018        0          0.000000       0                   1                 1              0                     0                             1             1              1                    9                       12                               6                 9                    3                     1                              4                  1                      1                 1                              1                             0                               0                        0                               1                                 0                                 0               1    3212.555556             98                          29              752      534.000000              98                     1                     0         40
+

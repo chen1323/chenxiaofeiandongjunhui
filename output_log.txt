@@ -1,0 +1,785 @@
+B pub_top_5pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.001}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.001}}
+B pub_top_10pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.001}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.001}}
+B pub_top_20pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 1}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 1}}
+B pub_top_30pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.001}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.001}}
+B job_top_5pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 1}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 1}}
+B job_top_10pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 1}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 1}}
+B job_top_20pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 1}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 1}}
+B job_top_30pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 1}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 1}}
+B pub_w_top_5pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.01}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.01}}
+B pub_w_top_10pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 1}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 1}}
+B pub_w_top_20pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 1}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 1}}
+B pub_w_top_30pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 1}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 1}}
+C pub_top_5pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.01}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.01}}
+C pub_top_10pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.001}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.001}}
+C pub_top_20pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.001}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.001}}
+C pub_top_30pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 1}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 1}}
+C job_top_5pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 1}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 1}}
+C job_top_10pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.001}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.001}}
+C job_top_20pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 1}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 1}}
+C job_top_30pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 1}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 1}}
+C pub_w_top_5pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 1}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 1}}
+C pub_w_top_10pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.001}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.001}}
+C pub_w_top_20pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.001}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.001}}
+C pub_w_top_30pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.001}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.001}}
+D pub_top_5pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.01}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.01}}
+D pub_top_10pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.1}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.1}}
+D pub_top_20pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 1}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 1}}
+D pub_top_30pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 1}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 1}}
+D job_top_5pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 1}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 1}}
+D job_top_10pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.01}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.01}}
+D job_top_20pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.1}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.1}}
+D job_top_30pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 1}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 1}}
+D pub_w_top_5pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 1}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 1}}
+D pub_w_top_10pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 1}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 1}}
+D pub_w_top_20pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 1}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 1}}
+D pub_w_top_30pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.1}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.1}}
+E pub_top_5pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.001}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.001}}
+E pub_top_10pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.001}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.001}}
+E pub_top_20pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 1}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 1}}
+E pub_top_30pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.1}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.1}}
+E job_top_5pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.001}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.001}}
+E job_top_10pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.01}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.01}}
+E job_top_20pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 1}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 1}}
+E job_top_30pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 1}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 1}}
+E pub_w_top_5pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.01}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.01}}
+E pub_w_top_10pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.1}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.1}}
+E pub_w_top_20pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.001}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.001}}
+E pub_w_top_30pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.001}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.001}}
+F pub_top_5pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.001}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.001}}
+F pub_top_10pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.001}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.001}}
+F pub_top_20pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.001}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.001}}
+F pub_top_30pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.001}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.001}}
+F job_top_5pct
+Trimming removed all positive cases for F job_top_5pct. Falling back to no trimming.
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.001}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.001}}
+F job_top_10pct
+Trimming removed all positive cases for F job_top_10pct. Falling back to no trimming.
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.001}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.001}}
+F job_top_20pct
+Trimming removed all positive cases for F job_top_20pct. Falling back to no trimming.
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.001}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.001}}
+F job_top_30pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.001}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.001}}
+F pub_w_top_5pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.001}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.001}}
+F pub_w_top_10pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.001}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.001}}
+F pub_w_top_20pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.001}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.001}}
+F pub_w_top_30pct
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+{'Logit_c': {'C': 0.001}}
+{'Logit_c': {'C': 0.01}}
+{'Logit_c': {'C': 0.1}}
+{'Logit_c': {'C': 1}}
+model
+Logit_c    {'Logit_c': {'C': 0.001}}
+Name: AUC, dtype: object
+{'Logit_c': {'C': 0.001}}
+Saved: result_main_2018.csv
+

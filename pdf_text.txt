@@ -1,0 +1,2368 @@
+What Job Application Data Reveal About Accounting Rookies’ Research Potential 
+ 
+ 
+ 
+ 
+Bin Ke1 and Zhen Long2 
+ 
+ 
+ 
+March 20, 2026 
+ 
+ 
+ABSTRACT 
+Most organizations adopt a structured recruitment funnel that begins with résumé -based screening. 
+Although systematic, this initial screening is time-consuming and error-prone due to limited information 
+and potential human biases. Using the accounting rookie job market as our empirical setting, we 
+examine whether the limited information available at the initial stage can support the development of 
+an effective machine learning algorithm for identifying candidates with stronger research potential. We 
+find that each of the three available inputs—résumés, the quality of prior educational institutions , PhD 
+advisors, and coauthors, and the job market paper —independently predicts subsequent research 
+productivity. When combined, these inputs generate a screening algorithm that performs two to four 
+times better than random guesses. We further document that the algorithm exhibits lower bias relative 
+to human recruiters. Taken together, our findings show  the promise of algorithmic screening in 
+improving the efficiency and effectiveness of initial-stage applicant screening.  
+JEL: C53; M12; M41; M51 
+Keywords: rookie candidates; resume; research productivity; machine learning 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+We thank K. Ramesh, Shiva Sivaramakrishnan, Lijun Xia, Sara Toynbee, Qi Zhang,  Haifeng You, Yong Yu, 
+workshop participants at the NUS , Rice University, University of Macau, Tsinghua University, UT -Austin, 
+Chinese University of Hong Kong, Shanghai Jiaotong University, Zhejiang University, University of Houston, 
+IDEI AI for Business Conference at HKU , for helpful comments.  Bin Ke acknowledges financial support from 
+the National University of Singapore and the National Natural Science Foundation of China (grant No. 72442013). 
+This article is written with the assistance of ChatGPT. 
+ 
+1 NUS Business School, National University of Singapore, Mochtar Riady Building, BIZ 1, #07- 30, 15 Kent 
+ Ridge Drive, Singapore 119245. Tel: +65 66013133. Fax: +65 67736493. Email: bizk@nus.edu.sg.  
+2 School of Accountancy, Zhongnan University of Economics and Law. Email: longzhen@zuel.edu.cn.1 
+ 
+1. Introduction 
+Employee selection is a fundamental component of management control systems. 1  Most 
+organizations follow a structured recruitment funnel , which typically includes multiple stages: initial 
+screening by human recruiters based on limited information, typically only standardized résumés  
+(without direct interaction), followed by several rounds of interviews to collect additional information 
+to evaluate the shortlisted candidates’ hard and soft skills. While systematic, the standard recruitment 
+funnel is often time-consuming, costly, and prone to suboptimal outcomes (Boushey and Glynn 2012). 
+One significant hurdle is the large volume of applicants, which pressures recruiters to make quick, 
+superficial decisions during the initial screening phase (Li, Raymond, and Bergman 2026; Lerner and 
+Bergman 2024). This rushed evaluation often results in overlooking qualified candidates, an error that 
+subsequent stages of the recruitment process cannot  rectify effectively (Lerner and Bergman 2024) . 
+This study proposes and validates a novel personnel selection method designed to enhance both the 
+efficiency and effectiveness of applicant screening in the initial stage of the recruitment funnel. 
+ Traditional employee recruitment processes largely depend on the judgment of human 
+recruiters, which introduces two key limitations (Hoffman, Kahn, and Li 2018; Kahneman, Sibony, and 
+Sunstein 2021). First, recruiters are prone to heuristic and cognitive biases, leading to inconsistent 
+evaluations of job applicants’ fit and performance potential. Lerner and Bergman (2024) observe that 
+recruiters perform only marginally better than random chance in evaluating resumes during the initial 
+ 
+1 Merchant and Van der Stede (2017) classify management control systems into action, results, and personnel and 
+cultural controls. Employee selection is a critical part of personnel control.  2 
+ 
+stage of employee selection, with significant disagreement on what constitutes a strong candidate. 
+Second, agency conflicts, such as personal preferences or nepotism, can distort judgments. These 
+deficiencies frequently result in mismatches between hired employees and optimal candid ates, 
+ultimately hampering firm performance. 
+ To address the inherent limitations of human recruiters, we leverage machine learning 
+techniques (Mullainathan 2025). While machine learning's superior information-processing capabilities 
+relative to human judgment are well established (e.g., Ding, Lev, Peng, Sun, and Vasarhelyi 2020; Liu 
+2022), it remains an open question whether machine learning–based selection methods are effective 
+when constrained by the limited information available at the initial screening stage. 
+We assess the feasibility of our proposed selection method using data from the accounting 
+rookie faculty job market. The academic hiring context allows us to address a key obstacle in 
+implementing and validating our predictive selection models: the lack of outcome data for non- hired 
+applicants. In typical recruitment settings, post-hire outcomes are observed only for selected candidates, 
+introducing selection bias and limiting the generalizability of model performance —particularly in 
+contexts with low hirin g rates. In contrast, we observe subsequent publication outcomes for all job 
+market candidates, regardless of placement. This feature enables us to train a model on the full set of 
+applicants, reducing selection bias and enhancing predictive validity. In addition, our research question 
+is equally relevant to academic institutions, as they face selection challenges analogous to those faced 
+by corporate recruiters. 3 
+ 
+Our sample comprises complete application records for 569 candidates — fewer than 150 per 
+year—who participated in the Miami rookie market between 2015 and 2018. The sample ends in 2018 
+to allow for a 5-year window for measuring post-graduation research performance. Although recruiters 
+assess candidates on multiple dimensions, we focus on research potential because it is both critical to 
+faculty hiring decisions and inherently difficult to measure. Data on other dimensions, such as teaching 
+ability, are unavailable at the initial recruitment stage and hence cannot be analyzed in this study. We 
+expect that recruiters evaluate additional dimensions in subsequent stages of the hiring process, when 
+richer information can be obtained through direct interactions with shortlisted candidates. 
+We proxy for research potential using the number of publications in 11 leading journals 
+spanning accounting, finance, and management science—outlets widely regarded as central to the 
+accounting discipline. We track publications over a five- year window begi nning on January 1 of the 
+candidate’s graduation year, reflecting the typical timing of the academic job market, which commences 
+in December. To simplify the prediction task, we convert the continuous publication count into a binary 
+outcome, defined using thresholds at the 5th, 10th, 20th, and 30th percentiles for each year. 
+To evaluate the predictive value of different types of application data, we construct a series of 
+machine learning models for predicting research productivity using three primary data sets. The first 
+set (denoted as set A) consists of information extracted directly from candidates’ resumes. The second 
+set (denoted as set B) includes metrics related to the quality of journals in which the candidates have 
+published, as well as the reputations of their educational institutions, dissertation advisors, and 4 
+ 
+coauthors. While the variables in the second set are not directly included in the candidates’ application 
+materials, they are readily obtainable from publicly available sources.  
+Reading job market papers is one of the most time-consuming tasks for faculty recruiters. We 
+therefore examine whether machine learning can extract useful information from job market papers, 
+which form our third dataset (Set C). To represent paper content, we use OpenAI’s large language 
+model, text-embedding-3-large. Given the model’s token limit, we restrict the embedded text to each 
+paper’s title, abstract, and introduction.2 
+To address potential selection bias resulting from the endogenous matches between job 
+candidates and academic institutions, we classify institutions as research -intensive or non -research-
+intensive and implement inverse probability weighting (IPW), following Swaminathan and Joachims 
+(2015) and Schnabel et al. (2016). IPW reweights observations by the estimated probability of a given 
+candidate–institution type match, thereby mitigating bias arising from non-random matching. 
+ We begin by evaluating the predictive value of each data source—A, B, and C —when used 
+independently in our machine learning models. We use a cumulative rolling window approach, training 
+models on at least two years of data , and accordingly, the testing samples cover the 2017 and 2018 
+batches. Given the small training sample sizes, we employ the  logit model, which outperforms more 
+advanced methods such as Random Forest in our study.   
+ 
+2 Accounting rookie candidates may sometimes include the title and abstracts of their job market paper and other 
+working papers within their resumes. However, the resume data in Set A explicitly excludes any information 
+related to such abstract information. As a result, there is no overlap between Sets A and C in our analysis . 5 
+ 
+For both test years, the research productivity model based on each data source significantly 
+outperforms the unconditional mean benchmark for each dependent variable, which represents random 
+guessing. These results suggest that each data source contains useful information for predicting research 
+productivity.  
+Next, we evaluate the performance of a research productivity model that combines all three 
+data sources into a single specification (Model ABC). As expected, Model ABC significantly 
+outperforms the unconditional mean benchmark for each dependent variable. Moreover, its 
+performance is generally comparable to, and in many cases exceeds, that of models based on a single 
+data source. 
+An important question is whether our most comprehensive research productivity specification, 
+Model ABC, outperforms human recruiters when research productivity is used as the sole evaluation 
+criterion. Institutions with higher rankings tend to attract stronger candidates. Moreover, rookie 
+candidates selected by top-ranked institutions often benefit from these institutions’ superior resources, 
+which can further enhance their productivity. Consequently, if the profession efficiently matches 
+candidate quality to institutional quality, the collective outcomes of human recruiters should, in theory, 
+outperform the predictions of our machine learning model.
+3 
+To test this prediction, we rank the universities based on U.S. News & World Report’s top 50 
+graduate business schools, since  most accounting candidates in our sample graduated from North 
+American institutions. Institutions not on this list are ranked using the QS World University Ranking, 
+ 
+3  Since we do not have access to the list of applicants for individual institutions, we cannot evaluate the 
+performance of our best machine learning model at the individual institution level.  6 
+ 
+while those absent from both rankings are placed at the bottom. To reduce the potential measurement 
+error of the university rankings, we aggregate universities included in the U.S. News and QS World 
+University rankings into deciles for each year. Institutions not appearing on either list are placed in a 
+separate category, ranked at the bottom.  
+To evaluate the performance of human recruiters across the accounting profession, we train a 
+machine learning model  (also a logit model) that uses the decile ranking of the initial placement 
+institution as the sole input (denoted as the Human Selection Model ). The results indicate that the 
+Human Selection Model outperforms random guessing for approximately 75% of the specifications in 
+the two combined test years. This evidence is consistent with the view that human recruiters possess 
+information or judgment that improves selection outcomes relative to random assignment.   However, 
+the performance of Model ABC exceeds that of the Human Selection Model in 75% of the models in 
+the two combined test years. Notably, as the prediction task becomes more demanding —specifi cally, 
+when applying the 5% or 10% cutoff—Model ABC outperforms the Human Selection Model, with an 
+average improvement of 92%. These results suggest that human recruiters may have substantially 
+misjudged candidates’ research potential, or alternatively, that they place weight on non- research 
+productivity factors that justify forgoing the observed large performance gains. 
+The performance differences between Model ABC  and the Human Selection Model  suggest 
+that human recruiters weigh  the data sources —A, B, and C —differently than our machine learning 
+models do. To better understand these weighting differences, we compare Model ABC, which predicts 
+research productivity, with a new model that uses the same predictors (ABC) but instead predicts a job 7 
+ 
+candidate’s initial job placement (the Initial Placement Model). As with Model ABC, we convert the 
+placement rankings into dichotomous variables using the same cutoffs.   
+We employ Shapley values (SHAP)  to quantify the contribution of individual predictors to  
+prediction performance. Given the large number of predictors, we focus on the top ten predictors based 
+on their SHAP values for each model. We find significant differences in both the ranking and the sign 
+of SHAP values between Model ABC and the Initial Placement Model, suggesting that human recruiters 
+weigh the same information sources differently from Model ABC. 
+Our final analysis examines whether Model ABC exhibits greater biases than human recruiters 
+against specific candidate groups. We compare the predicted probabilities from Model ABC and the 
+predicted probabilities from the Initial Placement Model across two broad categories  of candidate 
+attributes: (i) demographic characteristics such as gender and ethnicity (Asian background, European 
+background), and (ii) institution characteristics (PhD program ranking and productivity of dissertation 
+advisors). The results provide evidence consistent with greater bias in recruiters’ selection decisions. 
+Specifically, recruiters exhibit a preference for candidates with a European background, those from the 
+top 10 PhD programs, and those advised by highly productive dissertation supervisors. 
+ The remainder of the paper is structured as follows: Section 2 reviews the prior literature and 
+outlines our contributions. Section 3 details our research design and methodology. Section 4 presents 
+empirical results and related sensitivity checks. Section 5 leverages our best predictive model to analyze 
+the extent of bias reflected in hiring outcome s. Finally, Section 6 concludes with a summary of the 
+findings and implications. 8 
+ 
+2. Prior literature and contributions  
+This study contributes to multiple streams of literature across different academic fields.  First, 
+we contribute to the literature on managerial accounting and human resource management by 
+addressing a central challenge in employee selection: assessing a candidate’s performance potential 
+based on limited information available at the initial stage of the recruitment process.  While most 
+existing studies in accounting and management focus on causal inference questions —such as how to 
+motivate employees through contract design—there is relatively little research on employee selection  
+methods, which are inherently prediction problems .
+4 Although prior research has acknowledged the 
+importance of measuring employee performance potential in human capital management  (e.g., Deller 
+2023; Grabner, Künneke, and Moers 2025) , few have directly developed predictive methods for 
+measuring human capital performance potential. To the best of our knowledge, Chen and Ke (2026) are 
+among the few studies in the accounting and management literature that employ machine- learning 
+models to assess human capital potential . Chen and Ke (2026) demonstrate the predictive value of 
+resumes in initial applicant screening , but limit their focus to entry -level positions in a financial 
+institution, which require relatively low levels of employee discretion. This raises an important 
+question: can resumes alone effectively predict job performance for positions requiring significant 
+discretion? 
+ 
+4 Managerial accounting research (Manthei, Sliwka, and Vogelsang 2023)  emphasizes two fundamental roles of 
+management control systems —decision -facilitating and decision -influencing—which closely correspond to the 
+concepts of prediction and causal inference, respectively. 9 
+ 
+We address this question by examining rookie faculty candidates in accounting, whose primary 
+responsibility is to conduct high-quality research— a task requiring substantial creativity and discretion. 
+Using data on candidates’ top post-graduation journal publications, we provide evidence that the limited 
+resume information available during initial applicant screening is highly valuable for predicting future 
+research productivity. Moreover, our machine learning models , trained on resume data,  significantly 
+outperform human recruiters’ selection outcomes. 
+By integrating the findings from Chen and Ke (2026) and our study, which analyze two distinct 
+organizational contexts and job types, our research underscores the predictive power of resumes in 
+forecasting future job performance. However, our findings also highlight that such information is 
+underutilized in current human- centered recruitment processes. We provide a counterfactual analysis 
+indicating that, if the top 10 institutions were to adopt our most comprehensive model in applicant 
+screening, the concentration of the most productive researchers among these institutions would increase 
+by more than 40%.  
+Our study responds directly to Kaplan (1998) , who advocates for more practice -relevant 
+research through the development of new management tools within organizations, and to Labro (2025), 
+who highlights the scarcity of managerial accounting research offering practical relevance and 
+actionable insights, while calling for greater attention to predictive analytics (see also Casas- Arce, 
+Cheng, Grabner, and Modell 2022). Our study is important because advanced people analytics tools of 
+the type we develop remain underexplored and largely unimplemented in recruitment. 10 
+ 
+Second, our study contributes to the economics literature on talent selection within academic 
+settings. This literature primarily focuses on causal inference, identifying factors that explain variation 
+in academic researchers' research productivity. Key determinants of research productivity highlighted 
+in prior studies include research funding (Gulbrandsen and Smeby 2005) , the rank of the candidate ’s 
+Ph.D. program  (Conley and Önder 2014) , advisor ’s gender  (Hussey, Murray, and Stock 2022) , 
+parenthood (Krapf, Ursprung, and Zimmermann 2017), coauthorship network (Ductor 2015; Defazio, 
+Lockett, and Wright 2009; Yadav, McHale, and O’Neill 2023; Hilmer and Hilmer 2012; Ductor and 
+Visser 2022), and initial job placement (Oyer 2006). 
+As expected, most studies in this literature focus on causal inference questions, typically 
+examining associations between academic productivity and one or two specific factors. However, 
+relatively few studies have explored out -of-sample prediction of academic productivity. For instance, 
+Hilmer and Hilmer (2012) collected data on over 3,000 rookie job candidates listed in the Journal of 
+Economic Literature who earned their economics Ph.D. between 1990 and 1994. Using 1994 as a test 
+year, they predicted publication counts based on a limited set of publicly available predictors, given no 
+direct access to candidates’ resumes, including six Ph.D. program-tier dummies, advisor prominence, 
+whether the candidate worked with a prominent advisor, and whether they published during graduate 
+school. Similarly, Ductor et al. (2014) constructed a coauthorship network using articles published in 
+EconLit from 1970 to 1999 to investigate how network- related variables predict academic output. 
+Ductor et al. (2014) did not differentiate between rookie and non -rookie scholars, nor did it consider 
+the role of limited resume information at initial applicant screening. 11 
+ 
+Our study contributes to this emerging literature on prediction by developing a machine 
+learning model tailored to the initial screening of rookie job candidates in accounting—a field closely 
+related to, but distinct from, economics. Importantly, we are the first to evaluate the predictive value of 
+limited job application materials  in assessing future research productivity. In addition, our list of 
+predictors is more comprehensive than those used in prior studies, as we leverage the full suite of 
+application information available to human recruiters. This allows us to provide a richer and more 
+realistic assessment of the factors influencing research productivity, advancing the predictive 
+capabilities in academic talent selection. 
+Third, our study contributes to the growing field of advanced people analytics on person- job 
+fit, a domain primarily driven by researchers in computer engineering.5  Much of the existing literature 
+in this area focuses on methodological advancements and proof -of-concept studies, rather than 
+developing user-centered machine learning algorithms grounded in real-world data that can outperform 
+current management practices (Meier and Laumer 2022). A common limitation in this field is the lack 
+of access to actual job performance data, leading many studies to rely on proxy measures of person-job 
+fit, such as similarity or distance scores between candidates ’ credentials and job descriptions ( e.g., 
+Malinowski et al., 2006; Kmail et al., 2015; Zaroor et al., 2017; Manad et al., 2018; Bello et al., 2020; 
+Lee and Ahn, 2020; Zhu et al., 2018; Shen et al., 2018; Qin et al., 2020) . These studies assume that 
+higher similarity between a candidate’s CV and a job description indicates a better fit . Unfortunately, 
+prior studies have not validated this assumption using subsequent job performance data. 
+ 
+5 This literature is voluminous, and it is beyond the scope of this study to provide a thorough review of this 
+literature. Interested readers can read Strohmeier (2022) and Qin et al. (2024) for comprehensive reviews. 12 
+ 
+Another stream of research in people analytics involves building prediction models of 
+“hirability,” using scores from human raters as ground truth. However, even experienced HR 
+professionals often disagree on the most important factors in candidate evaluation (Harris 2018; Lerner 
+and Bergman 2024) . Moreover, these studies are often based on hypothetical scenarios that  may not 
+accurately reflect the complexities of real -world hiring decisions. While the management field has 
+begun exploring algorithm-based employee selection, much of the focus remains on the measurement 
+of theoretical constructs rather than prediction (Campion et al. 2024; Sajjadiani, Sojourner, Kammeyer-
+Mueller, and Mykerezi 2019; Chakraborty, Chiong, Dover, and Sudhir 2024). 
+Our study differs fundamentally from these existing approaches in several key ways. First, we 
+observe both hiring outcomes and post -hiring performance for all applicants, enabling us to develop 
+more reliable predictive models. This represents a significant advantage over Chen and Ke (2026), who 
+observe post-hiring performance only for applicants who are hired. Second, unlike many studies in the 
+machine learning field that prioritize methodological innovations, we emphasize the critical importance 
+of data engineering (e.g., resume data in our study) . Our approach aligns with Ng’s (2021) call for a 
+data-centric approach  that prioritizes refining  input data (X) and labels (Y) over iterative model 
+adjustments.  
+Although our best machine learning model, Model ABC, demonstrates strong performance, we 
+acknowledge that research productivity is not the sole factor considered by human recruiters. For 
+example, cultural fit may play a significant role in recruitment decisions. Furthermore, many aspects of 
+the recruitment process may not lend themselves to machine learning approaches. Accordingly, we view 13 
+ 
+our machine learning models as tools to augment —not replace —human recruiters by improving the 
+efficiency and quality of candidate screening at the initial stage of the recruitment process. Furthermore, 
+by generating a quantitative estimate of research potential, our models offer an explicit quantitative 
+benchmark that can inform trade- offs among candidate attributes (e.g., research versus teaching 
+potential), thereby potentially enhancing the quality of overall recruitment decisions. 
+3. Empirical Designs 
+3.1. Data sources 
+ The data for our study is drawn from multiple sources. To minimize data collection costs, we 
+focus on rookie accounting job candidates who attended the Miami Rookie Camp. Given the need to 
+evaluate each candidate’s post-graduation performance over a five-year period, our sample is restricted 
+to rookie candidates from the years 2015 to 2018. For instance, a job candidate from 2015 would have 
+submitted their job application to the Camp by December 31, 2015, and graduated by the summer of 
+2016. For each candidate, we collect only their resume and job market paper, as the primary objective 
+of this study is to evaluate the predictive value of these data sources for future research productivity. 
+As shown in Table 1, our final sample comprises 569 rookie candidates: 152 from 2015, 141 from 2016, 
+145 from 2017, and 131 from 2018. 
+ To measure the academic quality of the universities represented in our sample, we gather 
+historical business school rankings from U.S. News & World Report and the QS World University 
+Rankings. The U.S. News rankings, published annually in the Best Graduate Schools report, list the top 
+50 business schools in the United States. The QS World University Rankings, also published annually, 14 
+ 
+offer a broader global perspective. Since the U.S. News rankings are limited to U.S. institutions and the 
+majority of our candidates received their PhDs from North American universities, we use them  as the 
+primary source. For institutions not included in the U.S. News list, we supplement with the QS rankings. 
+Combining these sources, we compile a comprehensive list of 80 ranked universities. To ensure the 
+integrity of our analysis and avoid look-ahead bias, we rely on rankings published in the year preceding 
+each candidate’s application. This approach ensures that the rankings used for university reputation 
+assessment accurately reflect the information available at the time candidates enter the job market. 
+ To assess the reputation of a rookie candidate’s advisors and coauthors, we utilize the annual 
+research productivity rankings from the BYU website 
+(https://byuaccounting.net/rankings/main/studydescription.php). These rankings are based on 
+publications in prominent accounting journals, including Accounting Horizons, Accounting, 
+Organizations and Society, Auditing: A Journal of Practice & Theory, Behavioral Research in 
+Accounting, Contemporary Accounting Research, Journal of Accounting and Economics, Journal of 
+Accounting Research, Journal of Information Systems, Journal of Management Accounting Research, 
+Journal of the American Taxation Association, Review of Accounting Studies, and The Accounting 
+Review. 
+ We also track the initial job placement of each rookie candidate using publicly available 
+sources, such as online resumes, LinkedIn profiles, and SSRN. For candidates without publicly 
+available placement information or who took positions outside academia (9 candidates in the 2015 15 
+ 
+cohort, 8 in 2016, 12 in 2017, and 7 in 2018), we conservatively assume that they obtained positions at 
+the lowest-ranked universities.  
+ We measure research productivity using publication data from 11 top journals in accounting 
+and finance: Journal of Accounting Research, Journal of Accounting and Economics, The Accounting 
+Review, Contemporary Accounting Research, Review of Accounting Studi es, Accounting, 
+Organizations and Society, Journal of Finance, Journal of Financial Economics, Review of Financial 
+Studies, Journal of Financial and Quantitative Analysis, and Management Science. We include 
+Management Science in this list because it is a leading journal in management science and a popular 
+publication outlet for accounting researchers. 
+ To identify publications authored by the rookie candidates in our sample, we collect all articles 
+published in these journals from 2005 to 2023 and perform a name -matching process. To ensure 
+comparability among PhD graduates from different years, we limit our analysis to papers published 
+within five years after the candidates’ Miami Rookie Camp application year. The five -year horizon is 
+chosen because our dataset includes publication records only through the end of 2023 at the start of this 
+study. In addit ion, assistant professors in many universities are required to submit their tenure 
+applications by the end of year five.  
+3.2. Definition of research productivity  
+ In our primary analyses, we measure a job candidate ’s research productivity by counting the 
+number of publications in the 11 top accounting and finance journals over a five -year period starting 
+from January 1 of a candidate’s graduation year . As a robustness check, we also define research 16 
+ 
+productivity using a citation- weighted measure in Section 4.4, in which each publication is weighted 
+by its Google citation count as of July 24, 2024, the date of our data collection. 
+ To simplify the prediction task, we convert the continuous research productivity variable into 
+a dichotomous variable, which equals 1 if a rookie candidate ’s research productivity ranks within the 
+top K% of all rookie candidates graduating in the same year, and 0 otherwise. We evaluate K% values 
+of 5%, 10%, 20%, and 30%. 6 We limit K%  to 30% because, as shown in footnote 6, the cutoff for 
+K=30% is already the lowest positive integer  of 1. We denote these dichotomous variables as 
+pub_top_5pct, pub_top_10pct, pub_top_20pct, and pub_top_30pct, corresponding to the respective 
+cutoff levels (see Panel A of Appendix A for the detailed definitions). In addition to reducing forecasting 
+complexity, using multiple dichotomous measures of research productivity better aligns with the needs 
+of individual institutions, which are often more concerned with whether a candidate falls within the top 
+K% of the applicant pool than with the exact number of top-tier journal publications. 
+3.3. Definitions of model predictors 
+We introduce the predictors of our research productivity prediction models in this section. See 
+Appendix A for the detailed definitions of the predictors. 
+3.3.1. Predictors extracted from the resume  
+ Given the unstructured nature of resumes, we use GPT-4 (gpt-4-1106-preview) from OpenAI 
+to extract structured variables. The specific prompts used for this process are presented in Table OA1 
+ 
+6 The number of publications corresponding to the cutoffs of 5%, 10%, 20%, and 30% are as follows: for the test 
+year 2017, the counts are 4, 3, 2, and 1, respectively; for the test year 2018, the counts are 3, 2, 1, and 1, 
+respectively. 17 
+ 
+of the Online Appendix. We refer to the resulting set of predictors extracted directly from the resumes 
+as Predictors A.  We assess the accuracy of GPT’s feature extraction from résumés in the Online 
+Appendix, Table OA2. 
+As noted in the Introduction, recruiters observe multiple signals during the hiring process . 
+Compared with other sources, such as interview evaluations available only to shortlisted candidates, 
+resume data offer a key advantage: the features we study are largely factual, difficult to manipulate, and 
+often verifiable through third- party sources. Models based on resume data are therefore likely more 
+robust to candidates’ behavioral responses. 
+3.3.2. Predictors extracted from external public knowledge  
+Many predictors extracted from resumes carry significant meaning that is  readily apparent to 
+human recruiters due to their external knowledge , but may not be obvious to machines. Hence, w e 
+develop the following set of Predictors B for each candidate. First, we measure the academic quality of 
+candidates’ institutions using the U.S. News and QS rankings discussed earlier. Second, we assess 
+publication and presentation quality using the top journals and accounting conferences noted in Table 
+OA1. Third, using BYU accounting rankings, we measure the reputation of dissertation adviso rs and 
+coauthors, as well as the strength of coauthor network. Finally, we infer nationality from languages 
+reported on the resume. 
+3.3.3. Predictors extracted from the job market paper  
+Because the job market paper contains unstructured data, we use text embeddings to represent 
+its content numerically. An embedding is a sequence of numbers that captures the semantic content of 18 
+ 
+the text, such as concepts expressed in natural language. Given the study’s primary focus on evaluating 
+the predictive value of resumes—and the token constraints of the large language model employed —we 
+restrict the embedded content of each job market paper to its title, abstract, and introduction. For brevity, 
+we continue to refer to this subset of text as the “job market paper” throughout the paper. A 
+comprehensive exploration of full-text embeddings is left to future research.  
+We use OpenAI’s text-embedding-3-large model to generate paper embeddings. Although the 
+model produces 3,072- dimensional vectors, we retain only the first 256 dimensions, which OpenAI 
+reports still perform well relative to most alternatives. For texts long er than 8,191 tokens, we use 
+overlapping sliding windows with a 100- token stride and average the resulting vectors  (Goodfellow, 
+Bengio, and Courville 2016). For candidates without job market papers, we assign a 256- dimensional 
+zero vector. We label these measures Predictors C. 
+Given the limitations of the embedding techniques employed by current large language models, 
+it is unlikely that embeddings will fully capture the informational content of the job market paper's title, 
+abstract, and introduction. This constraint should be considered when interpreting the incremental value 
+of job market papers in our subsequent analysis. 
+3.4. Machine learning methods 
+3.4.1. Model details 
+Our primary objective is to leverage a job candidate’s resume and other publicly available data 
+from year 𝑡𝑡 to predict their research productivity over the subsequent five years. Given the temporal 19 
+ 
+nature of our machine learning approach, we adopt a cumulative time series framework, incorporating 
+all available historical data on rookie job candidates to train the models. 
+Due to the relatively small sample size in each year’s rookie job market, we require at least 2 
+years of training data to ensure model robustness. Consequently, our analysis includes two test years: 
+2017 and 2018. For the 2017 test year, we use training data from 2015 and 2016. Similarly, for the 2018 
+test year, we train the model using data from 2015 to 2017. 
+Prior accounting research often employs advanced machine learning methods for predictive 
+tasks. However, in this study, we use standard logistic regression as our primary method due to the 
+small training sample sizes. Untabulated results indicate that prediction performance using the balanced 
+random forest method is consistently inferior to that of the logistic regression approach. 
+To evaluate the predictive value of Predictors A, B, and C individually, we train three separate 
+sets of predictive models, each using only one predictor type . Additionally, we assess the predictive 
+value of combining all three predictor types (denoted as Model ABC).  
+There are two possible approaches for training models that combine predictors A, B, and C.  
+The most common method, widely used in prior studies, involves combining all predictors into a single 
+model for training, known as the early- fusion approach. Alternatively, the late -fusion approach trains 
+separate models for each predictor type and then combines their predictions to produce the final output.  
+Each approach has distinct advantages and limitations, which depend on the task context, data 
+characteristics, and modeling objectives (Pereira, Salazar, and Vergara 2023) . The early -fusion 
+approach allows the model to access all available data upfront, potentially improving performance if 20 
+ 
+the features are complementary. It also enables the model to capture dependencies between features 
+across different data sources. However, early fusion may face challenges when predictors from different 
+modalities have varying scales or distributions, and it is more susceptible to overfitting, particularly 
+with limited training data. 
+In contrast, the late -fusion approach offers greater flexibility by processing each data source 
+independently, enabling a modular design that is easier to update. This approach is robust to missing 
+data, as predictions can still be made using the remaining models when one data source is unavailable. 
+Additionally, late fusion is more scalable, allowing new data sources or models to be incorporated 
+without requiring retraining of the entire system. It is also less prone to overfitting  because individual 
+models operate on smaller, independent feature sets.  
+In this study, we implement a late -fusion ensemble approach that averages the predicted 
+probabilities from individual models (Baltrušaitis, Ahuja, and Morency 2019) . Untabulated results 
+indicate that the early-fusion specification yields inferior predictive performance. 
+One empirical challenge to estimating our machine learning models is that the observed 
+matches between job candidates and placement institutions are endogenously determined, raising 
+concerns about potential selection biases. To address this, we follow Swaminathan and Joachims (2015) 
+and Schnabel et al. (2016) by implementing an inverse probability weighting (IPW) procedure, which 
+re-weights the training sample to approximate a hypothetical market in which, conditional on observed 
+resume characteristics, candidates are quasi -randomly assigned to different types of institutions. We 
+provide a detailed explanation of this procedure in Appendix B. 21 
+ 
+To mitigate the risk of overfitting in out -of-sample predictions, we partition the data into 
+training, validation, and test sets, as illustrated in Figure 1. The test set is entirely disjoint from the 
+combined training and validation sample. We randomly allocate 20% of the combined training and 
+validation sample to the validation set, with the remaining 80% used for training. During model training, 
+we specify a hyperparameter grid for 𝐶𝐶 (the inverse of the regularization strength) with values [0.001, 
+0.01, 0.1, 1]. The optimal 𝐶𝐶 for each model is selected based on the highest ROC_AUC score on the 
+validation set. All other hyperparameters are set to their default values. 7 Because the test set is used 
+only once—after model training and validation are complete —we reduce the likelihood of overfitting. 8 
+3.4.2. Performance evaluation metrics 
+Because the dependent variables for research productivity are binary and highly skewed, we 
+use NDCG@K (normalized discounted cumulative gain at K) as our primary evaluation metric, 
+following Bao et al. (2020). We set K equal to the unconditional mean of the dependent variable in the 
+test sample, which corresponds to the accuracy of a random benchmark. Because NDCG@K is not 
+easily interpretable, we also report Precision@K and Recall@K. Under this choice of K, the two 
+measures are identical, so we focus on Precision@K in the subsequent tables and discussion. Because 
+NDCG@K is not directly comparable across models with different unconditional means of the 
+ 
+7 Specifically, tolerance for stopping criteria: tol = 0.0001, maximum number of iterations to converge: max_iter 
+= 100. More details of the default parameters of the logit model available  at https://scikit-
+learn.org/1.5/modules/generated/sklearn.linear_model.LogisticRegression.html .  
+8 A common approach to assess overfitting risk is to compare predictive performance across in‑sample and out‑of-
+sample data  (Roelofs 2019; Webster, Rabin, Simon, and Jurie 2019; Aburass and Rumman 2024) . For our best-
+performing model, ABC, untabulated results show that NDCG@K for training -sample is not consistently higher 
+than for out-of-sample predictions. This pattern provides no evidence of systematic overfitting. 22 
+ 
+dependent variable, we also report LIFT, defined as Precision@K divided by that unconditional mean. 
+Detailed definitions of all metrics are provided in Appendix C. 
+4. Empirical results 
+4.1. Descriptive statistics 
+ Table 2 presents the descriptive statistics for all dependent variables and the variables included 
+in Predictors A and B for the full sample spanning 2015–2018. We omit the predictors C as they are 
+text embeddings and difficult to interpret. Panel A highlights that the dependent variables are highly 
+unbalanced. For the four academic performance proxies, the mean values exceed the cut-off thresholds. 
+This imbalance is largely due to ties in publication counts. For instance, while the top 30% of  rookies 
+are defined as those who have published at least one paper in top journals, the mean value of 
+pub_top_30pct is 0.41. 
+4.2. Machine learning models for research productivity  
+ Table 3 presents the performance of our machine learning models for the test years 2017 (Panel 
+A) and 2018 (Panel B), respectively. Focusing on the test year 2017 in Panel A, w e can draw several 
+insights from the results. First, the individual predictors A, B, and C demonstrate significant value in 
+forecasting rookie candidates ’ future research productivity when used separately. The LIFT values 
+indicate that, compared with the unconditional mean of the dependent variable, which serves as the  
+benchmark, all  models outperform this baseline by a substantial margin. For example, using 
+pub_top_5pct as the outcome variable, the Precision@K  metric for the model based on Predictor A 
+(Model A) is 7.16 times the benchmark, 8.95 for Predictor B (Model B), and 3.58 for Predictor C (Model 23 
+ 
+C). Second, the combined model incorporating all predictors (Model ABC) outperforms all individual 
+models A, B, or C when evaluated using NDCG@K as the performance metric.  
+ The conclusions for test year 2018 reported in Panel B are broadly similar, with a few minor 
+differences. Using NDCG@K as the evaluation metric, Model ABC outperforms the best-performing 
+individual model only when 𝐾𝐾=5%. In contrast, when Precision@K is used as the evaluation metric, 
+Model ABC performs at least as well as the best-performing individual model across specifications. 
+ Focusing on the most comprehensive model, Model ABC, we next evaluate its performance 
+across different cutoffs. Focusing on the test year 2017, LIFT shows a consistent downward trend: 12.53 
+for K=5%, 3.70 for K=10%, 2.26 for K=20%, and 1.61 for K=30%. We can draw similar inferences for 
+the test year 2018. This monotonic decline highlights that the predictive advantage of Model ABC 
+diminishes as K increases.  These findings reflect the nature of the prediction task: as the cutoff K 
+increases, the task becomes inherently easier, reducing the relative benefit provided by the machine 
+learning model. In other words, while Model ABC excels in scenarios where precise  predictions are 
+more challenging (e.g., at smaller values of K), its incremental value decreases as the prediction 
+requirements become less stringent.  
+4.3. Comparing Model ABC with human recruiters  
+ Up to this point, we have used the unconditional mean of the dependent variable, research 
+productivity, as a benchmark for evaluating the performance of our prediction models. A natural 
+question arises: can our best -performing model, ABC, outperform the se lection decisions of human 
+recruiters? The answer to this question is not immediately clear due to several factors.  On one hand, 24 
+ 
+human recruiters have access to a wealth of additional information beyond what is incorporated into 
+Model ABC. This includes qualitative and “ soft” information derived from reference letters and 
+interviews (both online and offline) in the later stages of the recruitment funnel, as well as other context-
+specific insights that are challenging to quantify. These factors could give human decision- makers a 
+distinct advantage over the algorithmic model. 
+ On the other hand, human recruiters may face significant cognitive limitations that could hinder 
+their ability to effectively process and synthesize vast amounts of information, especially at the initial 
+stage of the recruitment funnel. Furthermore, recruiters' decision-making is not immune to biases and 
+inefficiencies. Agency conflicts, stereotypes, and personal preferences may further distort recruitment 
+decisions, leading to suboptimal candidate selection. These limitations suggest that, despite access to 
+richer information at all stages of the recruitment funnel, human recruiters may not make better selection 
+decisions than Model ABC. 
+ Ideally, evaluating this question would compare the performance of Model ABC to the selection 
+decisions made by recruiters at each individual institution. However, because data on the full applicant 
+pool and placement decisions at the school level are unavailable , we conduct the analysis at the 
+aggregate level—comparing Model ABC’s performance to the collective placement outcomes across 
+all institutions. If the rookie job market functions efficiently—such that more productive candidates are 
+matched with higher-ranked institutions, and research potential is the primary selection criterion— then 
+institutional placement rankings should provide a stronger predictor of subsequent research productivity 
+than Model ABC.   25 
+ 
+4.3.1. The out-of-sample performance results of the Human Selection Model 
+ To test this prediction, we construct a new machine-learning model for research productivity 
+that uses the ranking of the initial job placement as its sole predictor (the Human Selection Model). This 
+model serves as a proxy for the prediction performance of human recruiters in the accounting 
+profession. For university rankings, we rely on the U.S. News & World Report rankings of the top 50 
+U.S. business schools. For schools not covered by these rankings, we use the QS World University 
+Rankings. Any remaining initial placements not included in either list are assigned the lowest rank. 
+ This continuous ranking-based predictor has potential measurement errors. For instance, a 
+school ranked No. 15 may not differ significantly from a school ranked No. 20. Additionally, candidates 
+who receive offers from both No. 15 and No. 20 schools might choose the slightly lower-ranked No. 20 
+school for personal reasons, such as spouse or family preferences. To address this concern, we convert 
+the continuous ranking variable into deciles for schools included in the combined U.S. News and QS 
+World University rankings. Schools excluded from both lists are assigned a separate, lowest -ranking 
+decile. 9  
+ Table 4 compares the performance of Model ABC with the Human Selection Model for the test 
+years 2017 (Panel A) and 2018 (Panel B), respectively. Note that the performance metrics for Model 
+ABC in Table 4 are reproduced from Table 3. As the findings for 2017 and 2018 are broadly similar, 
+our discussion focuses on the results for the test year 2017. 
+ 
+9 The inferences remain consistent regardless of whether the continuous or quintile ranking of initial job placement 
+is applied in the Human Selection Model (results not tabulated).  26 
+ 
+ The analysis of the test year 2017 reveals several key insights. First, the LIFT values indicate 
+that the Precision@K values for the Human Selection Model are consistently higher than the 
+unconditional mean across all K cutoff levels, indicating that human recruiters outperform the baseline. 
+Second, and more importantly, Model ABC consistently outperforms the Human Selection Model at all 
+K cutoff levels , as reflected in its higher NDCG@K values. For example, at K=5%, Model ABC 
+achieves an NDCG@K that is 171 % higher than that of the Human Selection Model; at K=10%, the 
+corresponding improvement is 108%. These results highlight the superior predictive accuracy of Model 
+ABC. 
+ However, the relative advantage of Model ABC over the Human Selection Model decreases as 
+the cutoff K increases, with performance differences diminishing from K=5% to K=30%. This pattern 
+suggests that as the prediction task becomes less challenging to human recruiters with larger cutoffs, 
+the benefit of using Model ABC over the Human Selection Model diminishes. 
+4.3.2. Performance of top-ranked schools 
+ One potential critique of the analysis in Section 4.3.1 is that comparing Model ABC to human 
+recruiters for the entire profession may not be entirely appropriate, as lower-tier schools may lack access 
+to the full pool of rookie candidates. Additionally, top-tier schools may possess superior talent-selection 
+capabilities and thus could beat Model ABC. To address this concern, we compare the performance of 
+Model ABC with the performance of the Human Selection Model, focusing exclusively on top-ranked 
+schools, which are assumed to have full access to the entire pool of rookie candidates. 27 
+ 
+ For each cutoff K (e.g., 5%) in a given test year, we begin by counting the number of rookie 
+candidates (denoted as 𝑁𝑁) with 𝑝𝑝𝑝𝑝𝑝𝑝_𝑡𝑡𝑡𝑡𝑝𝑝_𝐾𝐾𝑝𝑝𝐾𝐾𝑡𝑡 = 1. Next, we select N rookie candidates whose initial 
+job placements are at the highest-ranked schools, based on the combined U.S. News & World Report 
+and QS World University ranking lists. Using these candidates ’ subsequent top-journal publications, 
+we calculate relevant performance metrics based on the ranking order of their placement institutions.  
+ Table 5 presents the comparative performance of Model ABC and the Human Selection Model 
+for top-ranked schools in test years 2017 (Panel A) and 2018 (Panel B), respectively. It is important to 
+note that the performance metrics for Model ABC in Panel B are the same as those reported in Table 3. 
+Assuming the top-ranked schools have access to the entire pool of rookie applicants, the unconditional 
+means are the same as in Table 4. 
+The broad inference in Table 5 is similar to that in Table 4. The analysis reveals little evidence 
+that the selection performance of top- ranked schools exceeds that of Model ABC, especially at  lower 
+K cutoffs . This suggests that the predictive advantage of Model ABC remains robust even when 
+compared specifically to top-ranked institutions. 
+4.3.3. Removing top-ranked schools 
+ The analyses in Sections 4.3.1 and 4.3.2 assume that research potential is the primary selection 
+criterion for all schools. However, teaching could be a critical factor in faculty recruitment at institutions 
+with top MBA programs. To address this potential concern, we exclude candidates placed in the top 10 
+business schools (as ranked by U.S. News & World Report) and retrain the Human Selection Model on 28 
+ 
+this restricted sample. This adjustment reduces the sample size by 23 candidates across the two test 
+years. 
+ Table 6 presents the test results for the revised Human Selection Model and the original Model 
+ABC for the test years 2017 (Panel A) and 2018 (Panel B), respectively. As we have removed the 
+candidates placed in the top 10 schools, the unconditional means are different from those in Table 4 
+too. In addition, Model ABC is the same as in Table 4, except that we compute all performance 
+evaluation metrics using the reduced test sample. 
+ The broad inference in Table 6 is similar to that in Table 4.  The results show no evidence of 
+improved performance of the Human Selection Model with the revised sample compared to the full 
+sample. This outcome suggests that the weaker performance of the Human Selection Model is unlikely 
+to be due to top school recruiters placing greater weight  on teaching than on research potential  in 
+recruitment. 
+4.4. Citation-weighted research productivity 
+ In our primary analysis, we measure a candidate ’s research productivity by counting top- tier 
+journal publications. However, this measure has a limitation—it does not account for the impact  of the 
+publications. To address this concern, we adjust the publication count for impact  by weighing each 
+candidate i’s publications based on their Google Scholar citation counts measured as of July 24, 2024. 
+The weighted publication count is computed using the formula:   
+𝑁𝑁𝑝𝑝𝑁𝑁_𝑃𝑃𝑝𝑝𝑝𝑝_𝑊𝑊𝑊𝑊𝑊𝑊𝑊𝑊ℎ𝑡𝑡𝑊𝑊𝑡𝑡𝑖𝑖= 𝑁𝑁𝑝𝑝𝑁𝑁_𝑃𝑃𝑝𝑝𝑝𝑝𝑖𝑖∗ 𝐶𝐶𝑊𝑊𝑡𝑡𝐶𝐶𝑡𝑡𝑊𝑊𝑡𝑡𝐶𝐶𝑖𝑖
+∑ 𝐶𝐶𝑊𝑊𝑡𝑡𝐶𝐶𝑡𝑡𝑊𝑊𝑡𝑡𝐶𝐶𝑘𝑘
+#𝑟𝑟𝑟𝑟𝑟𝑟𝑘𝑘𝑖𝑖𝑟𝑟𝑟𝑟 𝑟𝑟𝑜𝑜 𝑡𝑡ℎ𝑟𝑟 𝑟𝑟𝑠𝑠𝑠𝑠𝑟𝑟 𝑏𝑏𝑠𝑠𝑡𝑡𝑏𝑏ℎ
+𝑘𝑘=1
+ 29 
+ 
+Where 𝑁𝑁𝑝𝑝𝑁𝑁_𝑃𝑃𝑝𝑝𝑝𝑝𝑖𝑖 is the number of top journal publications for candidate i, and 𝐶𝐶𝑊𝑊𝑡𝑡𝐶𝐶𝑡𝑡𝑊𝑊𝑡𝑡𝐶𝐶𝑖𝑖 denotes the 
+number of citations for all top journal publications by candidate i. Using this adjusted performance 
+measure, we redefine the research productivity indicators based on the same percentile cutoffs, denoting 
+them as pub_w_top_Xpct, where X=5, 10, 20, or 30, according to 𝑁𝑁𝑝𝑝𝑁𝑁_𝑃𝑃𝑝𝑝𝑝𝑝_𝑊𝑊𝑊𝑊𝑊𝑊𝑊𝑊ℎ𝑡𝑡𝑊𝑊𝑡𝑡𝑖𝑖.10   
+ Table 7 presents the test results for the research productivity prediction models using these 
+weighted measures across various K cutoffs for the test years 2017 (Panel A) and 2018 (Panel B). The 
+results show that our inferences remain robust to adjustments for publication quality. 
+ We also replicate the analysis in Table 4 using citation -weighted publications. The results are 
+shown in Table 8 for the test years 2017 (Panel A) and 2018 (Panel B) . Again, we find qualitatively 
+similar inferences to those in Table 4.  The only notable exception is the test year 2017 with 𝐾𝐾= 5%, 
+where Model ABC underperforms the Human Selection Model based on NDCG@K, although the two 
+models perform comparably when Precision@K or LIFT is used as the evaluation metric. 
+4.5. Shapley value analysis  
+ Given that rookie job candidates ’ resumes and related information, such as school and BYU 
+rankings, are readily accessible to human recruiters, an important question arises: why do recruiters fail 
+to incorporate this value- relevant information effectively into  their faculty selection decisions? W e 
+investigate this issue by constructing an alternative machine-learning prediction model, referred to as 
+ 
+10 Because citation counts generally increase over time, publications closer to our citation measurement date (July 
+24, 2024) are expected to accumulate fewer citations. To account for this, we also construct a measure of research 
+productivity that adjusts ci tation counts based on each publication’s proximity to the measurement date. Our 
+inferences remain qualitatively unchanged (untabulated). 30 
+ 
+the “Initial Placement Model,” that uses the same predictors (A, B, and C) to predict the school rankings 
+of candidates’ initial placement institutions. 
+ To align with the definitions of the dependent variables of research productivity for Model ABC 
+in Table 3, we convert the continuous initial placement ranking variable into dichotomous variables 
+with the same cutoffs: 5%, 10%, 20%, and 30%. These variables are denoted as job_top_Xpct, where 
+X = 5, 10, 20, or 30. Descriptive statistics for these dependent variables are presented in Table 2, while 
+the results for the Initial Placement Models are reported in Table OA3 of the Online Appendix for test 
+years 2017 (Panel A) and 2018 (Panel B), respectively. 
+ To explore how Model ABC and the Initial Placement Model differ in their use of predictors 
+A, B, and C, we use Shapley values (SHAP) to assess the importance of each predictor in each model. 
+Shapley analysis, derived from cooperative game theory, distributes the total gains among players based 
+on their individual contributions, providing insight into the relative importance of each feature in a 
+model’s predictions. 
+ Because the ensemble method combines the three sets of predictors (A, B, and C) in both 
+models, we first compute the Shapley values for each feature in the individual base models and then 
+aggregate these values to compare and rank feature importance (Lundberg et al. 2020; Abdullakutty 
+and Naseem 2024). To ensure comparability across different predictor sets, we normalize the Shapley 
+values within each model so that the sum of their absolute values equals 1, following the methodology 
+of Leinonen et al. (2023). Specifically, for each test year, we calculate the Shapley values for all 
+predictors, sum their absolute values within the predictor set, and divide each individual Shapley value 31 
+ 
+by this total. This normalization ensures that the sum of the absolute Shapley values for each base model 
+equals 1, allowing a fair comparison of the relative contributions of predictors across models. 
+ Given the large number of features in the combined predictor list of A, B, and C, we follow the 
+approach of Chen and Ke (2026) by focusing on the top 10 most important features for each model, as 
+determined by their Shapley values. Table 9 presents the results for the test years 2017 (Panel A) and 
+2018 (Panel B).  
+4.5.1. The top 10 features of Model ABC 
+We first focus on the top 10 features of Model ABC for the test year 2017 in Panel A. Several 
+patterns emerge. First, a stable core of predictors appears across the dependent variable specifications, 
+including measures of collaboration breadth ( number of coauthors ), professional membership  and 
+reference prominence (e.g., reference_first , reference_high, reference_mean), institutional prestige 
+(PhD_top), and early research achievement (number of awards and number of top R&R papers).  
+Second, the relative importance of these predictors varies with the cutoff used to define research 
+productivity. For the most selective research productivity cutoffs (top 5% and 10%), early distinction 
+signals—particularly awards and high -quality R&R outcomes— rank most prominently. In contrast, for 
+broader research productivity definitions (top 20% and 30%), collaboration-based measures dominate, 
+with the number of coauthors ranked first and additional network characteristics (e.g., coauthor_high, 
+coauthor_top, number_of_coauthor_2degree) entering the top ranks.  
+Third, the estimated signs are generally intuitive: awards, coauthorship breadth, R&R quality, 
+and doctoral program prestige are positively associated with future productivity. However, consistent 32 
+ 
+with the model's multivariate nature, several predictors exhibit negative associations that likely reflect 
+conditional trade-offs rather than unconditional effects. The coefficient on the number of memberships 
+is negative across specifications, suggesting that, holding other characteristics constant, extensive 
+committee or association involvement may proxy for time allocated away from research activities. 
+Similarly, reference-based prominence measures (e.g., reference_high and reference_first) enter with 
+negative signs , suggesting that stronger reference reputations are negatively correlated with future 
+research productivity. Finally, at higher productivity cutoffs, measures of coauthor reputation (e.g., 
+coauthor_high, coauthor_top, and coauthor_mean) are negatively associated with future productivity. 
+These interpretations should be viewed with caution, as Shapley- based importance measures  
+conditional predictive contributions rather than structural causal effects. 
+The 2018 Shapley value results for Model ABC reinforce the main findings from 2017. Extreme 
+productivity is most closely linked to early quality and citation signals, whereas broader upper -tier 
+productivity is more strongly associated with the breadth of collaboration and professional 
+embeddedness. There exists modest year-to-year variation in the relative ranking of these dimensions. 
+In addition, the signs of key variables are highly stable across the two test years. Awards, coauthorship 
+breadth, R&R-based measures, doctoral program prestige, and reviewer experience remain positively 
+associated with future productivity, while the number of memberships  and several conditional 
+reputation measures (e.g., reference_first  and reference_high) continue to have  negative marginal 
+contributions. These patterns suggest that the cross -year differences primarily reflect reweighting 
+among closely related predictors rather than a structural change in the model’s economic interpretation. 33 
+ 
+4.5.2. The top 10 features of the Initial Placement Model 
+We now turn to the top 10 features of the initial placement models . We start with an analysis 
+of the test year 2017. Across all cutoff definitions (5%, 10%, 20%, and 30%), several predictors 
+consistently rank among the most important features and can be grouped into four broad economic 
+categories. First, measures of research productivity and visibility—most notably , the number of awards 
+and presentations—appear in all four models and are uniformly positively associated with top 
+placements. Presentations at top conferences ( number of presentations at top conferences ) also enter 
+prominently in the 10% and 20% specifications with positive signs. These patterns suggest that external 
+validation and professional visibility are strongly associated with favorable placement outcomes across 
+the distribution, consistent with the view that hiring committees reward signals of research momentum 
+and peer recognition. 
+Second, advisor and reference quality variables appear in most specifications. Measures such 
+as reference_first, reference_mean, and reference_high enter three or more models, although their signs 
+are not always stable across cutoffs. Their repeated inclusion nevertheless indicates that the reference 
+writer's reputation is an important predictor of initial placement, particularly at more selective 
+thresholds. 
+Third, network and coauthor characteristics frequently emerge as important predictors. 
+Variables such as coauthor_high, number_of_coauthor_2degree, and number of membership appear 
+across multiple cutoffs. While their estimated signs vary in some cases, the number of memberships is 34 
+ 
+consistently negative in the 10%, 20%, and 30% models, suggesting that broader but potentially weaker 
+affiliations may not translate into stronger placement outcomes. 
+Finally, educational background —captured by PhD_top— enters the 5% and 20% 
+specifications with a positive sign. This finding is consistent with institutional prestige serving as a 
+salient signal in the academic job market.  
+Taken together, the Shapley value results for test year 2017 indicate that research productivity, 
+reference quality, network characteristics, and doctoral program prestige jointly shape initial placement 
+outcomes, with productivity- related measures exhibiting the most consistent positive associations 
+across cutoff definitions. 
+We next move to the Shapley value results for the initial placement models for the test year 
+2018. We find that both test years share a common structure: research productivity, reference quality, 
+network characteristics, and doctoral prestige jointly shape initial placement outcomes. Although the 
+relative importance of specific variables shifts across years and cutoffs, the underly ing economic 
+categories that drive placements remain remarkably stable. 
+4.5.3. Differences between Model ABC and the Initial Placement Model 
+ Turning to a comparison of the top 10 features in the Initial Placement Model and Model ABC, 
+several observations emerge. Although the two models share several highly ranked features, their 
+feature compositions differ substantially, particularly at lower cutoff levels. For example, visibility-
+related variables—such as number of presentations and number of presentations at top conferences—
+and specialization in financial accounting ( primaryResearchArea_financial) appear more frequently 35 
+ 
+among the top 10 features in the Initial Placement Model. In contrast, Model ABC places greater weight 
+on measures of collaboration breadth (e.g., coauthors), reference prominence (e.g., reference_first , 
+reference_high, reference_mean), institutional prestige ( PhD_top), and early research achievement 
+(e.g., number of R&R papers and number of top R&R papers).  
+Second, the direction of feature importance often diverges between the two models, particularly 
+at lower cutoffs such as K=5% and 10%. For instance, in test year 2017, while Model ABC finds that 
+advisors' reputation (reference_high) and coauthors' mean reputation (coauthor_mean) negatively 
+predict a rookie candidate’s future research productivity, the Initial Placement Model assigns positive 
+weights to these factors. Conversely, Model ABC views external visibility (number of presentations) 
+listed on a candi date’s resume as a negative predictor of future productivity, whereas the Initial 
+Placement Model assigns a positive weight to this factor. 
+ Even when the directions of feature importance align between the two models, the feature 
+weightings differ significantly. For example, although the number of top R&R papers  contributes 
+positively in both models, it appears among the top 10 features only in Model ABC. Given that Model 
+ABC outperforms human recruiters at predicting research productivity, these differences in Shapley 
+values suggest that human recruiters misallocate weights among predictors, which likely contributes to 
+their relatively weaker performance. 
+4.6. Implications of Model ABC for the accounting profession’s rookie talent distribution 
+Given that machine learning has not yet been adopted in rookie faculty recruitment, it is 
+informative to explore the potential impact of implementing our best -performing model, Model ABC, 36 
+ 
+on the allocation of accounting rookie talent across institutions. We conduct a hypothetical analysis 
+under two simplifying assumptions: (i) recruiters base hiring decisions solely on candidates’ predicted 
+research potential, and (ii) rookie candidates alw ays accept offers from the highest -ranked institution, 
+where institutional rankings are determined by a combination of U.S. News & World Report and QS 
+World University Rankings. 
+We evaluate the impact of Model ABC in two steps. First, we compute the market share of top-
+tier journal publications over the five -year post -graduation period —both unadjusted and citation-
+adjusted—for the rookies actually hired by the top 10 U.S. schools in each test year (denoted as 
+SHARE_UNADJ and SHARE_ADJ, respectively). In both 2017 and 2018, these schools hired 10 
+candidates, representing less than 5% of the rookie market in each year. We refer to this group as the 
+“Human Hired Group.” Second, we ide ntify the same number of candidates using Model ABC’s 
+predicted pub_top_5pct scores and compute the same market-share measures for this group, denoted as 
+the “ML Selected Group.” We use pub_top_5pct  to match the actual hiring proportion of the top 10 
+schools in both years. 
+Table 1 0 reports the top 10 schools’ market share of top- tier publications — measured by 
+SHARE_UNADJ and SHARE_ADJ—for both the Human Hired Group and the ML Selected Group. 
+Based on SHARE_UNADJ, the 10 rookies actually hired by the top 10 schools account for 17.19% and 
+22.77% of all top journal publications in the five years following graduation for the 2017 and 2018 
+cohorts, respectively. In contrast, had these schools hired the top 10 candidates as ranked by Model 
+ABC, their market share would have risen to 31.25% and 25.74%, reflecting economically meaningful 37 
+ 
+increases of 82 % and 13 %, respectively. Results using the citation- adjusted measure, SHARE_ADJ, 
+yield qualitatively similar conclusions. Taken together, these findings highlight the potential for 
+machine learning–based hiring models to significantly alter the distribution of aca demic talent across 
+institutions. 
+5. Are there systematic biases in human recruiters’ selection outcomes?  
+ In this section, we examine whether human recruiters ’ suboptimal weighting of predictors A, 
+B, and C represents  systematic biases against specific groups of candidates. To investigate this, we 
+develop a metric, denoted as gap_Kpct _prob, which quantifies the discrepancy between predictions 
+generated by Model ABC and those produced by the Initial Placement Model  at each cutoff K. 
+Specifically, f or each test year, we calculate 𝑝𝑝𝑝𝑝𝑡𝑡𝑝𝑝(𝑝𝑝𝑝𝑝𝑝𝑝_𝑡𝑡𝑡𝑡𝑝𝑝_𝐾𝐾𝑝𝑝𝐾𝐾𝑡𝑡𝐴𝐴𝐴𝐴𝐴𝐴), representing the predicted 
+probabilities of pub_top_Kpct for Model ABC. Similarly, we compute 𝑝𝑝𝑝𝑝𝑡𝑡𝑝𝑝(𝑗𝑗𝑡𝑡𝑝𝑝_𝑡𝑡𝑡𝑡𝑝𝑝_𝐾𝐾𝑝𝑝𝐾𝐾𝑡𝑡𝐴𝐴𝐴𝐴𝐴𝐴) for the 
+Initial Placement Model , which represents the predicted probabilities of job_top_Kpct for the initial 
+placement outcomes. gap_Kpct_prob is defined as follows: 
+𝑊𝑊𝐶𝐶𝑝𝑝_𝐾𝐾𝑝𝑝𝐾𝐾𝑡𝑡_𝑝𝑝𝑝𝑝𝑡𝑡𝑝𝑝= 𝑝𝑝𝑝𝑝𝑡𝑡𝑝𝑝(𝑝𝑝𝑝𝑝𝑝𝑝_𝑡𝑡𝑡𝑡𝑝𝑝_𝐾𝐾𝑝𝑝𝐾𝐾𝑡𝑡𝐴𝐴𝐴𝐴𝐴𝐴) − 𝑝𝑝𝑝𝑝𝑡𝑡𝑝𝑝(𝑗𝑗𝑡𝑡𝑝𝑝_𝑡𝑡𝑡𝑡𝑝𝑝_𝐾𝐾𝑝𝑝𝐾𝐾𝑡𝑡𝐴𝐴𝐴𝐴𝐴𝐴) 
+Since both Model ABC and the Initial Placement Model rely solely on information available at the time 
+of rookie faculty recruitment and are evaluated out of sample, gap_Kpct_prob serves as a reliable proxy 
+for the potential difference between the optimal outcomes (as predicted by Model ABC) and the actual 
+outcomes chosen by human recruiters (as represented by the Initial Placement Model ). A 
+gap_Kpct_prob value of 0 indicates that Model ABC’s prediction perfectly aligns with that of the Initial 
+Placement Model. A positive value suggests that human recruiters underestimate a candidate’s research 38 
+ 
+productivity relative to the optimal one , while a negative value indicates that human recruiters 
+overestimate a candidate’s research productivity relative to the optimal one. 
+ We then investigate whether gap_Kpct_prob varies systematically with the following two 
+categories of candidate characteristics: (i) demographic characteristics, including gender, whether the 
+candidate is Asian (second_language_asia), whether the candidate is European 
+(second_language_euro); and (ii) institution background, including whether the candidate earned a PhD 
+from a top -10 business school as ranked by U.S. News ( PhD_top10), and whether the candidate ’s 
+primary dissertation advisor ranks in the top 10% of the BYU ranking list for accounting journal 
+publications in the test year (reference_top). 
+Table 11 reports the regression results. Panel A presents descriptive statistics for 
+gap_Kpct_prob across alternative cutoff values of 𝐾𝐾. The mean gap_Kpct_prob is positive when K=5% 
+and 10%  but negative when K=20% and 30%. This pattern suggests that, on average, the human 
+recruiters’ Initial Placement Model underestimates the future research productivity of top- performing 
+rookies and overestimates the productivity of moderately performing rookies. 
+Panel B reports the OLS estimates for gap_Kpct_prob, where all candidate characteristics are 
+included in a single specification. Regarding demographic characteristics, we find that the coefficients 
+on gender and second_language_asia are generally statistically insignificant across cutoffs, providing 
+no evidence of systematic human bias against female candidates or candidates with an Asian language 
+background. In contrast, the coefficient on second_language_euro is negative at all cutoff values and 
+statistically significant for K=20% and 30%. This pattern suggests that recruiters tend to overestimate 39 
+ 
+the future research productivity of candidates with a European language background at higher cutoff 
+levels. 
+Regarding institutional background, we find that the coefficient on PhD_top10 is negative 
+across all cutoffs and statistically significant for  K=10% and 20% , while the coefficient on 
+reference_top is negative at all cutoffs and significant for K=10%, 20%, and 30%. Taken together, these 
+findings are consistent with recruiters systematically overestimating the expected productivity of 
+candidates from elite PhD programs and those endorsed by leading accounting scholars during the initial 
+hiring stage. 
+6. Conclusion  
+This study examines whether limited information available at the initial stage of the employee 
+selection process can be used to develop an effective machine learning model for candidate screening. 
+We focus on accounting rookies, whose positions require substantial discretion and sustained research 
+productivity, and evaluate whether résumés, publicly available metrics  on academic institutions, PhD 
+advisors, and coauthors, and job market papers predict long-term research output. 
+We find that résumé-based information alone is a strong predictor of subsequent performance 
+and, in several specifications, outperforms human screening decisions. In addition, the machine learning 
+model exhibits lower bias relative to human recruiters. Tak en together, these findings suggest that 
+models based on information readily available early in the recruitment process can improve screening 
+accuracy and mitigate inefficiencies inherent in human-centered hiring. 40 
+ 
+This research makes several important contributions. First, it highlights the utility of machine 
+learning in addressing a longstanding challenge in recruitment: identifying high -potential candidates 
+from large applicant pools during initial screening with limited candidate information. By focusing on 
+academic hiring— a context that requires high discretion and long- term productivity—we extend the 
+scope of existing research, such as Chen and Ke (2026) on machine learning in recruitment, which has 
+largely been limited to entry-level positions with minimal discretion. Second, our study underscores the 
+predictive power of resumes, a widely accessible and underutilized resource in hiring decisions. By 
+integrating resume data with public metrics, our models achieve significant performance gains, offering 
+a scalable solutio n for improving recruitment outcomes. Third, we provide a novel comparison of 
+machine learning predictions with human selection decisions,  revealing systematic biases and 
+suboptimal weighting of predictors in human judgment that could be overcome by machine learning. 
+ The findings have important practical implications. For academic institutions, machine learning 
+models can complement traditional recruitment processes, reducing biases and inefficiencies while 
+improving the likelihood of long -term success among hires. These models also offer a cost -effective 
+and scalable alternative to resource- intensive interview processes, particularly at the initial stages of 
+screening.  
+ More broadly, organizations in non-academic sectors could adopt  similar approaches to 
+streamline recruitment. The demonstrated effectiveness of resumes as predictors suggests that 
+organizations could refine their screening methods without extensive reliance on proprietary or 41 
+ 
+confidential data. However, it is essential to ensure that machine learning models are applied ethically, 
+with attention to potential biases in training data that may perpetuate discrimination. 
+ While our study provides valuable insights, it also raises important questions for future 
+research. First, extending the analysis to other academic disciplines and job types would validate the 
+generalizability of these findings. Future studies could explore roles that require different combinations 
+of technical and interpersonal skills to examine the applicability of resume- based predictions across  
+diverse contexts.  
+Second, incorporating additional data sources, such as structured evaluations of soft skills or 
+references, could further enhance model performance in roles that emphasize leadership and 
+collaboration. Advances in natural language processing may enable the inclusion of qualitative data, 
+such as interview transcripts or letters of recommendation, into predictive models. 
+ Finally, longitudinal studies are needed to examine the broader organizational impacts of 
+integrating machine learning into talent recruitment. These studies should consider not only the 
+predictive accuracy of models but also their effects on workforce diversity, retention rates, and overall 
+productivity. Addressing these questions will be critical for designing recruitment processes that are 
+both effective and equitable. 
+ 42 
+ 
+References 
+Abdullakutty, F., and U. Naseem. 2024. Decoding memes: a comprehensive analysis of late and early fusion 
+models for explainable meme analysis. In Companion Proceedings of the ACM Web Conference 
+2024, 1681–1689. Singapore: ACM. 
+Aburass, S., and M. A. Rumman. 2024. Quantifying overfitting: introducing the overfitting index. In 2024 
+International Conference on Electrical, Computer and Energy Technologies, 1–7. 
+Austin, P. C., and E. A. Stuart. 2015. Moving towards best practice when using inverse probability of 
+treatment weighting (IPTW) using the propensity score to estimate causal treatment effects in 
+observational studies. Statistics in Medicine 34 (28): 3661–3679. 
+Baltrušaitis, T., C. Ahuja, and L.-P. Morency. 2019. Multimodal machine learning: A survey and taxonomy. 
+IEEE Transactions on Pattern Analysis and Machine Intelligence 41 (2): 423–443. 
+Bao, Y ., B. Ke, B. Li, Y . J. Y u, and J. Zhang. 2020. Detecting accounting fraud in publicly traded us firms 
+using a machine learning approach. Journal of Accounting Research 58 (1): 199–235. 
+Bello, M., L. Alejandra, E. Bonilla, C. Hernandez, B. Pedroza, and A. Portilla. 2020. A novel profile’s 
+selection algorithm using AI. Applied Computer Science 16 (1): 18–32. 
+Boushey, H., and S. J. Glynn. 2012. There are significant business costs to replacing employees. Center for 
+American Progress 16: 1–9. 
+Campion, E. D., M. A. Campion, J. Johnson, T. R. Carretta, S. Romay, B. Dirr, A. Deregla, and A. Mouton. 
+2024. Using natural language processing to increase prediction and reduce subgroup differences in 
+personnel selection decisions. Journal of Applied Psychology 109 (3): 307. 
+Casas-Arce, P., M. M. Cheng, I. Grabner, and S. Modell. 2022. Managerial accounting for decision-making 
+and planning. Journal of Management Accounting Research 34 (1): 1–7. 
+Chakraborty, I., K. Chiong, H. Dover, and K. Sudhir. 2024. Can AI and AI-hybrids detect persuasion skills? 
+Salesforce hiring with conversational video interviews. Marketing Science 44 (1): 30–53. 
+Chen, C., and B. Ke. 2026. The Predictive Value of Job Application Data in Initial Applicant Screening . 
+Working paper. 
+Conley, J. P., and A. S. Önder. 2014. The research productivity of new PhDs in economics: The surprisingly 
+high non-success of the successful. Journal of Economic Perspectives 28 (3): 205–216. 
+Crump, R. K., V . J. Hotz, G. W. Imbens, and O. A. Mitnik. 2009. Dealing with limited overlap in estimation 
+of average treatment effects. Biometrika 96 (1): 187–199. 
+Defazio, D., A. Lockett, and M. Wright. 2009. Funding incentives, collaborative dynamics and scientific 
+productivity: Evidence from the EU framework program. Research Policy 38 (2): 293–305. 
+Deller, C. 2023. Beyond performance: does assessed potential matter to employees’ voluntary departure 
+decisions? Journal of Accounting Research 61 (4): 981–1024. 
+Ding, K., B. Lev, X. Peng, T. Sun, and M. A. Vasarhelyi. 2020. Machine learning improves accounting 
+estimates: evidence from insurance payments. Review of Accounting Studies 25 (3): 1098–1134. 
+Ductor, L. 2015. Does co- authorship lead to higher academic productivity? Oxford Bulletin of Economics 
+and Statistics 77 (3): 385–407. 
+Ductor, L., M. Fafchamps, S. Goyal, and M. J. van der Leij. 2014. Social networks and research output. 
+Review of Economics and Statistics 96 (5): 936–948. 43 
+ 
+Ductor, L., and B. Visser. 2022. When a coauthor joins an editorial board. Journal of Economic Behavior & 
+Organization 200: 576–595. 
+Goodfellow, I., Y . Bengio, and A. Courville. 2016. Deep learning. Cambridge, Massachusetts: MIT Press. 
+Grabner, I., J. Künneke, and F. Moers. 2025. Promotion decisions and the adoption of explicit potential 
+assessment. Management Science 71 (11): 9233–9255. 
+Gulbrandsen, M., and J.-C. Smeby. 2005. Industry funding and university professors’ research performance. 
+Research Policy 34 (6): 932–950. 
+Harris, C. G. 2018. Making better job hiring decisions using “human in the loop” techniques. In Proceedings 
+of the 2nd International Workshop on Augmenting Intelligence with Humans-in-the-Loop, 16–26. 
+Hernan, M. A., and J. M. Robins. 2020. Causal Inference: What If. CRC Press. 
+Hilmer, M., and C. E. Hilmer. 2012. On the search for talent in academic labor markets: Easily observable 
+later-graduate study outcomes as predictors of early- career publishing, placement, and tenure. 
+Economic Inquiry 50 (1): 232–247. 
+Hoffman, M., L. Kahn, and D. Li. 2018. Discretion in hiring. Quarterly Journal of Economics 133 (2): 765–
+800. 
+Hussey, A., S. Murray, and W. Stock. 2022. Gender, coauthorship, and academic outcomes in economics. 
+Economic Inquiry 60 (2): 465–484. 
+Kahneman, D., O. Sibony, and C. R. Sunstein. 2021. Noise: A flaw in human judgment. New York, NY , USA: 
+Little, Brown Spark. 
+Kaplan, R. S. 1998. Creating new management practice through innovation action research. SSRN Scholarly 
+Paper. Rochester, NY: Social Science Research Network. 
+Kmail, A. B., M. Maree, M. Belkhatir, and S. M. Alhashmi. 2015. An automatic online recruitment system 
+based on exploiting multiple semantic resources and concept -relatedness measures. In 2015 IEEE 
+27th International Conference on Tools with Artificial Intelligence (ICTAI), 620–627. 
+Krapf, M., H. W. Ursprung, and C. Zimmermann. 2017. Parenthood and productivity of highly skilled labor: 
+Evidence from the groves of academe. Journal of Economic Behavior & Organization 140: 147–
+175. 
+Labro, E. 2025. Thoughts on management accounting research at The Accounting Review’s centennial. The 
+Accounting Review 100 (6): 373–384. 
+Lee, D., and C. Ahn. 2020. Industrial human resource management optimization based on skills and 
+characteristics. Computers & Industrial Engineering 144: 106463. 
+Leinonen, J., U. Hamann, I. Sideris, and U. Germann. 2023. Thunderstorm nowcasting with deep learning: 
+A multi‐hazard data fusion model. Geophysical Research Letters 50 (8): e2022GL101626. 
+Lerner, A., and P. Bergman. 2024. Are recruiters better than a coin flip at judging resumes? Here’s the data. 
+https://interviewing.io/blog/are-recruiters-better-than-a-coin-flip-at-judging-resumes. 
+Li, D., L. R. Raymond, and P. Bergman. 2026. Hiring as exploration. Review of Economic Studies 93 (2): 
+1200–1240. 
+Liu, M. 2022. Assessing Human Information Processing in Lending Decisions: A Machine Learning 
+Approach. Journal of Accounting Research 60 (2): 607–651. 
+Lundberg, S. M., G. Erion, H. Chen, A. DeGrave, J. M. Prutkin, B. Nair, R. Katz, J. Himmelfarb, N. Bansal, 
+and S.-I. Lee. 2020. From local explanations to global understanding with explainable AI for trees. 44 
+ 
+Nature machine intelligence 2 (1): 56–67. 
+Malinowski, J., T. Keim, O. Wendt, and T. Weitzel. 2006. Matching people and jobs: A bilateral 
+recommendation approach. In Proceedings of the 39th Annual Hawaii International Conference on 
+System Sciences (HICSS’06), 6:137c–137c. IEEE. 
+Manad, O., M. Bentounsi, and P. Darmon. 2018. Enhancing talent search by integrating and querying big 
+HR data. In 2018 IEEE International Conference on Big Data (Big Data), 4095–4100. IEEE. 
+Manthei, K., D. Sliwka, and T. V ogelsang. 2023. Information, incentives, and attention: a field experiment 
+on the interaction of management controls. The Accounting Review 98 (5): 455–479. 
+Meier, F. J., and S. Laumer. 2022. Machine learning in HR staffing. In Handbook of Research on Artificial 
+Intelligence in Human Resource Management. Edward Elgar. 
+Merchant, K. A., and W. A. V . der Stede. 2017. Management Control Systems: Performance Measurement, 
+Evaluation and Incentives. Pearson. 
+Mullainathan, S. 2025. Economics in the age of algorithms. AEA Papers and Proceedings 115: 1–23. 
+Ng, A. 2021. A chat with Andrew on MLOps: from model -centric to data -centric AI. 
+https://www.youtube.com/watch?v=06-AZXmwHjo. 
+Oyer, P. 2006. Initial labor market conditions and long-term outcomes for economists. Journal of Economic 
+Perspectives 20 (3): 143–160. 
+Pereira, L. M., A. Salazar, and L. Vergara. 2023. A comparative analysis of early and late fusion for the 
+multimodal two-class problem. IEEE Access 11: 84283–84300. 
+Qin, C., L. Zhang, Y . Cheng, R. Zha, D. Shen, Q. Zhang, X. Chen, et al. 2024. A comprehensive survey of 
+artificial intelligence techniques for talent analytics. arXiv:2307.03195. 
+Qin, C., H. Zhu, T. Xu, C. Zhu, C. Ma, E. Chen, and H. Xiong. 2020. An enhanced neural network approach 
+to person-job fit in talent recruitment. ACM Transactions on Information Systems (TOIS) 38 (2): 1–
+33. 
+Roelofs, R. 2019. Measuring Generalization and Overfitting in Machine Learning. University of California, 
+Berkeley. 
+Sajjadiani, S., A. J. Sojourner, J. D. Kammeyer-Mueller, and E. Mykerezi. 2019. Using machine learning to 
+translate applicant work history into predictors of performance and turnover. Journal of Applied 
+Psychology 104 (10): 1207. 
+Schnabel, T., A. Swaminathan, A. Singh, N. Chandak, and T. Joachims. 2016. Recommendations as 
+treatments: debiasing learning and evaluation. In Proceedings of The 33rd International Conference 
+on Machine Learning, 1670–1679. PMLR. 
+Shen, D., H. Zhu, C. Zhu, T. Xu, C. Ma, and H. Xiong. 2018. A joint learning approach to intelligent job 
+interview assessment. In Proceedings of the 27th International Joint Conference on Artificial 
+Intelligence, 3542–3548. IJCAI’18. Stockholm, Sweden: AAAI Press. 
+Strohmeier, S. 2022. Handbook of Research on Artificial Intelligence in Human Resource Management . 
+Edward Elgar. 
+Swaminathan, A., and T. Joachims. 2015. Counterfactual risk minimization: learning from logged bandit 
+feedback. In Proceedings of the 32nd International Conference on Machine Learning, 814– 823. 
+PMLR. 
+Webster, R., J. Rabin, L. Simon, and F. Jurie. 2019. Detecting overfitting of deep generative networks via 45 
+ 
+latent recovery. In , 11273–11282. 
+Yadav, A., J. McHale, and S. O’Neill. 2023. How does co-authoring with a star affect scientists’ productivity? 
+Evidence from small open economies. Research Policy 52 (1): 104660. 
+Zaroor, A., M. Maree, and M. Sabha. 2017. JRC: A job post and resume classification system for online 
+recruitment. In 2017 IEEE 29th International Conference on Tools with Artificial Intelligence 
+(ICTAI), 780–787. IEEE. 
+Zhu, C., H. Zhu, H. Xiong, C. Ma, F. Xie, P. Ding, and P . Li. 2018. Person-job fit: Adapting the right talent 
+for the right job with joint representation learning. ACM Transactions on Management Information 
+Systems (TMIS) 9 (3): 1–17. 
+ 46 
+ 
+Figure 1. Training set, validation set, and test set split 
+ 
+ 
+ 
+  
+Training / Validation set
+(random 80/20 split)
+Test set
+2015 2016 2017
+Test set
+2015 2016 2017 2018
+Training / Validation set
+(random 80/20 split)
+Test year 2017:
+Test year 2018:47 
+ 
+Table 1. Sample selection procedures  
+original files (number of applicants) 728 
+remove non-rookie applicants -53 
+remove applicants without CV or dissertation -47 
+remove duplicated applications of the same person in the same year -50 
+remove applications of the same person in different years by keeping the earliest one -9 
+final sample = 569 
+      2015 152 
+      2016 141 
+      2017 145 
+      2018 131 
+  48 
+ 
+Table 2. Descriptive statistics  
+ mean std min 25% 50% 75% max 
+Panel A: Dependent variables 
+pub_top_5pct 0.07 0.25 0 0 0 0 1 
+pub_top_10pct 0.16 0.37 0 0 0 0 1 
+pub_top_20pct 0.31 0.46 0 0 0 1 1 
+pub_top_30pct 0.41 0.49 0 0 0 1 1 
+job_top_5pct 0.05 0.21 0 0 0 0 1 
+job_top_10pct 0.08 0.28 0 0 0 0 1 
+job_top_20pct 0.18 0.39 0 0 0 0 1 
+job_top_30pct 0.30 0.46 0 0 0 1 1 
+Panel B: Predictors extracted from the resume and public sources (Predictors A and B) 
+gender 0.58 0.49 0 0 1 1 1 
+has Bachelor honor 0.47 0.50 0 0 0 1 1 
+has Master honor 0.21 0.41 0 0 0 0 1 
+has PhD honor 0.05 0.22 0 0 0 0 1 
+number of published papers 0.53 1.02 0 0 0 1 12 
+number of R&R papers 0.32 0.63 0 0 0 1 5 
+number of papers in progress 2.74 1.55 0 2 3 4 9 
+has_coauthor 0.96 0.21 0 1 1 1 1 
+has_reference 0.83 0.38 0 1 1 1 1 
+number of coauthors 4.49 2.72 0 3 4 6 18 
+number of presentations 6.72 4.59 0 4 6 9 30 
+number of teaching experiences 3.82 2.29 0 2 3 5 13 
+number of awards 4.48 3.10 0 2 4 6 17 
+number of reviewers 1.67 1.76 0 0 1 3 11 
+number of membership 1.23 1.63 0 0 0 2 7 
+number of working experiences 2.38 1.74 0 1 2 3 11 
+had academic work 0.65 0.48 0 0 1 1 1 
+had non-academic work 0.76 0.43 0 1 1 1 1 
+provide abstract 0.38 0.49 0 0 0 1 1 
+PrimaryResearchArea_financial 0.64 0.48 0 0 1 1 1 
+PrimaryResearchArea_auditing 0.15 0.36 0 0 0 0 1 
+PrimaryResearchArea_managerial 0.12 0.33 0 0 0 0 1 
+PrimaryResearchArea_tax 0.05 0.23 0 0 0 0 1 
+PrimaryResearchMethod_archival 0.74 0.44 0 0 1 1 1 
+PrimaryResearchMethod_experiment 0.15 0.36 0 0 0 0 1 
+PrimaryResearchMethod_analytical 0.08 0.27 0 0 0 0 1 
+multi_language 0.19 0.39 0 0 0 0 1 
+Bachelor_top 0.20 0.40 0 0 0 0 1 
+Master_top 0.29 0.45 0 0 0 1 1 
+PhD_top 0.45 0.50 0 0 0 1 1 
+visit_top 0.07 0.25 0 0 0 0 1 
+number of top published papers 0.08 0.30 0 0 0 0 2 
+number of top R&R papers 0.16 0.40 0 0 0 0 2 49 
+ 
+coauthor_mean 1486.40 1128.96 0 565.20 1386.43 2021 5614 
+coauthor_high 470.78 939.46 0 26 131 430 5614 
+number_of_coauthor_2degree 37.51 31.97 0 14 30 51 202 
+coauthor_top 0.29 0.46 0 0 0 1 1 
+number of presentations at top conferences 1.56 1.80 0 0 1 2 10 
+reference_first 651.12 1082.80 0 52 252 708 5614 
+reference_mean 882.12 864.48 0 252 644.75 1245.20 5614 
+reference_high 231.17 412 0 19 114 252 5614 
+second_language_asia 0.11 0.32 0 0 0 0 1 
+second_language_euro 0.22 0.41 0 0 0 0 1 
+Placerank 9.05 3.16 1 8 11 11 11 
+Notes: This table reports descriptive statistics for the dependent variables and the observable predictors extracted 
+from candidates’ resumes (Predictors A) and external public sources (Predictor s B) for the full sample of rookie 
+candidates from 2015 to 2018. Panel A reports the four research productivity indicators, pub_top_5pct, 
+pub_top_10pct, pub_top_20pct, and  pub_top_30pct, and the four initial placement indicators, job_top_5pct, 
+job_top_10pct, job_top_20pct, and  job_top_30pct. Panel B reports summary statistics for Predictors A and B. 
+Predictors C are omitted because they are text embeddings and are difficult to interpret. See Appendix A for 
+detailed variable definitions. 
+  50 
+ 
+Table 3. Prediction performance of rookie candidates’ research productivity 
+Panel A. Test year 2017 
+Predictor Mean DV NDCG@K Precision@K LIFT 
+Subpanel A: DV = pub_top_5pct 
+A 6.21 59.18 44.44 716.05 
+B 6.21 61.92 55.56 895.06 
+C 6.21 22.24 22.22 358.02 
+ABC 6.21 83.07 77.78 1253.09 
+Subpanel B: DV = pub_top_10pct 
+A 9.66 41.90 28.57 295.92 
+B 9.66 39.50 28.57 295.92 
+C 9.66 24.78 28.57 295.92 
+ABC 9.66 48.20 35.71 369.90 
+Subpanel C: DV = pub_top_20pct 
+A 21.38 39.65 35.48 165.97 
+B 21.38 53.58 45.16 211.24 
+C 21.38 46.53 51.61 241.42 
+ABC 21.38 57.44 48.39 226.33 
+Subpanel D: DV = pub_top_30pct 
+A 43.45 68.59 63.49 146.13 
+B 43.45 67.12 66.67 153.44 
+C 43.45 55.12 55.56 127.87 
+ABC 43.45 73.95 69.84 160.75 
+ 
+Panel B. Test year 2018 
+Predictor Mean DV NDCG@K Precision@K LIFT 
+Subpanel A: DV = pub_top_5pct 
+A 6.11 25.29 12.50 204.69 
+B 6.11 32.95 37.50 614.06 
+C 6.11 41.25 25.00 409.38 
+ABC 6.11 57.27 50.00 818.75 
+Subpanel B: DV = pub_top_10pct 
+A 18.32 33.24 29.17 159.20 
+B 18.32 50.63 37.50 204.69 
+C 18.32 39.65 33.33 181.94 
+ABC 18.32 48.94 37.50 204.69 
+Subpanel C: DV = pub_top_20pct 
+A 42.75 43.69 44.64 104.43 
+B 42.75 66.18 58.93 137.85 
+C 42.75 50.13 50.00 116.96 
+ABC 42.75 60.13 58.93 137.85 
+Subpanel D: DV = pub_top_30pct 51 
+ 
+A 42.75 44.73 44.64 104.43 
+B 42.75 64.30 57.14 133.67 
+C 42.75 60.48 55.36 129.50 
+ABC 42.75 59.04 58.93 137.85 
+ 
+Notes: This table reports the out-of-sample predictive performance of models forecasting rookie candidates’ future 
+research productivity. Panel A reports results for the test year 2017. Panel B reports results for the test year 2018. 
+Predictors A includes variables extracted directly from candidates’ resumes, P redictors B includes variables 
+constructed from external public knowledge, P redictors C includes text embeddings from the job market paper, 
+and ABC is the late -fusion ensemble model that averages the predicted probabilities from the three individual 
+models. Mean DV is the unconditional mean of the dependent variable in the test sample. NDCG@K, 
+Precision@K, and LIFT are defined in Appendix C.  
+  52 
+ 
+Table 4. Comparing the prediction performance of Model ABC and the Human Selection Model  
+Panel A. Test year 2017 
+ 
+pub_top_5pct pub_top_10pct pub_top_20pct pub_top_30pct 
+Subpanel A: Human Selection Model 
+Mean DV 6.21 9.66 21.38 43.45 
+NDCG@K 30.62 23.21 44.58 57.59 
+Precision@K 33.33 21.43 41.94 52.38 
+LIFT 537.04 221.94 196.15 120.56 
+Subpanel B: Model ABC 
+Mean DV 6.21 9.66 21.38 43.45 
+NDCG@K 83.07 48.20 57.44 73.95 
+Precision@K 77.78 35.71 48.39 69.84 
+LIFT 1253.09 369.90 226.33 160.75 
+Panel B. Test year 2018 
+ 
+pub_top_5pct pub_top_10pct pub_top_20pct pub_top_30pct 
+Subpanel A: Human Selection Model 
+Mean DV 6.11 18.32 42.75 42.75 
+NDCG@K 34.18 40.91 64.97 64.97 
+Precision@K 37.50 29.17 60.71 60.71 
+LIFT 614.06 159.20 142.03 142.03 
+Subpanel B: Model ABC 
+Mean DV 6.11 18.32 42.75 42.75 
+NDCG@K 57.27 48.94 60.13 59.04 
+Precision@K 50.00 37.50 58.93 58.93 
+LIFT 818.75 204.69 137.85 137.85 
+ 
+Notes: This table compares the out -of-sample prediction performance of Model ABC and the Human Selection 
+Model in forecasting research productivity. The Human Selection Model uses the decile ranking of the candidate’s 
+initial placement institution as the s ole predictor. Panel A reports test year 2017,  and Panel B reports test year 
+2018. The results for Model ABC are copied from Table 3. Mean DV is the unconditional mean of the dependent 
+variable in the test sample. NDCG@K, Precision@K, and LIFT are defined in Appendix C.   53 
+ 
+Table 5. Comparing the prediction performance of Model ABC and the Human Selection Model 
+for the top-ranked schools 
+Panel A. Test year 2017 
+ 
+pub_top_5pct pub_top_10pct pub_top_20pct pub_top_30pct 
+Subpanel A: Prediction performance of the top-ranked schools   
+Mean DV 6.21 9.66 21.38 43.45 
+NDCG@K 27.54 20.88 45.90 62.38 
+Precision@K 33.33 21.43 41.94 55.56 
+LIFT 537.04 221.94 196.15 127.87 
+Subpanel B: Model ABC 
+Mean DV 6.21 9.66 21.38 43.45 
+NDCG@K 83.07 48.20 57.44 73.95 
+Precision@K 77.78 35.71 48.39 69.84 
+LIFT 1253.09 369.90 226.33 160.75 
+Panel B. Test year 2018 
+ 
+pub_top_5pct pub_top_10pct pub_top_20pct pub_top_30pct 
+Subpanel A: Prediction performance of top-ranked schools  
+Mean DV 6.11 18.32 42.75 42.75 
+NDCG@K 29.69 38.34 65.99 65.99 
+Precision@K 37.50 29.17 62.50 62.50 
+LIFT 614.06 159.20 146.21 146.21 
+Subpanel B: Model ABC 
+Mean DV 6.11 18.32 42.75 42.75 
+NDCG@K 57.27 48.94 60.13 59.04 
+Precision@K 50.00 37.50 58.93 58.93 
+LIFT 818.75 204.69 137.85 137.85 
+ 
+Notes: This table compares the predictive performance of Model ABC against the realized selection outcomes for 
+the top -ranked schools. For each cutoff K in a given test year, we first count the number of candidates with 
+pub_top_Kpct = 1 and denote that number by N. We then identify the N candidates whose initial placements are 
+at the highest -ranked institutions based on the combined U.S. News and QS rankings, and compute the 
+corresponding performance metrics. Panel A reports test year 2017, and Panel B reports test year 2018. The results 
+for Model ABC are copied from Table 3. Mean DV is the unconditional mean of the dependent variable in the test 
+sample. NDCG@K, Precision@K, and LIFT are defined in Appendix C. 54 
+ 
+Table 6. Comparing the prediction performance of Model ABC and Human Selection Model 
+after excluding the top 10 business schools  
+Panel A. Test year 2017 
+ 
+pub_top_5pct pub_top_10pct pub_top_20pct pub_top_30pct 
+Subpanel A: Human Selection Model 
+Mean DV 4.38 8.03 18.25 40.88 
+NDCG@K 0.00 14.30 33.02 51.96 
+Precision@K 0.00 18.18 28.00 51.79 
+LIFT 0.00 226.45 153.44 126.69 
+Subpanel B: Model ABC 
+Mean DV 4.38 8.03 18.25 40.88 
+NDCG@K 75.26 36.89 50.67 71.48 
+Precision@K 66.67 27.27 40.00 67.86 
+LIFT 1522.22 339.67 219.20 166.01 
+Panel B. Test year 2018 
+ 
+pub_top_5pct pub_top_10pct pub_top_20pct pub_top_30pct 
+Subpanel A: Human Selection Model 
+Mean DV 4.07 15.45 39.84 39.84 
+NDCG 33.92 18.65 57.43 57.43 
+Precision@K 20.00 10.53 55.10 55.10 
+LIFT 492.00 68.14 138.32 138.32 
+Subpanel B: Model ABC 
+Mean DV 4.07 15.45 39.84 39.84 
+NDCG 48.52 35.64 53.97 52.50 
+Precision@K 40.00 26.32 53.06 53.06 
+LIFT 984.00 170.36 133.19 133.19 
+ 
+Notes: This table compares the prediction performance of Model ABC and the Human Selection Model after 
+excluding candidates initially placed at the top 10 U.S. business schools. The Human Selection Model uses the 
+decile ranking of the candidate’s initial placement institution as the sole predictor for research productivity in the 
+restricted sample. Panel A reports test year 2017 , and Panel B reports test year 2018. The reported results for 
+Model ABC are based on the same prediction model as in Table 3, but all performance metrics are recalculated 
+using the reduced test sample. Mean DV is the unconditional mean of the dependent variable in the restricted test 
+sample. NDCG@K, Precision@K, and LIFT are defined in Appendix C.  55 
+ 
+Table 7. Prediction performance of rookie candidates’ citation-weighted research productivity  
+Panel A. Test year 2017 
+Predictor Mean DV NDCG@K Precision@K LIFT 
+Subpanel A: DV = pub_w_top_5pct 
+A 4.83 22.91 28.57 591.84 
+B 4.83 24.38 28.57 591.84 
+C 4.83 29.18 28.57 591.84 
+ABC 4.83 29.18 28.57 591.84 
+Subpanel B: DV = pub_w_top_10pct 
+A 9.66 42.95 28.57 295.92 
+B 9.66 43.09 28.57 295.92 
+C 9.66 23.81 28.57 295.92 
+ABC 9.66 57.39 50.00 517.86 
+Subpanel C: DV = pub_w_top_20pct 
+A 20.00 44.21 37.93 189.66 
+B 20.00 60.63 51.72 258.62 
+C 20.00 47.38 48.28 241.38 
+ABC 20.00 60.41 51.72 258.62 
+Subpanel D: DV = pub_w_top_30pct 
+A 29.66 58.98 53.49 180.37 
+B 29.66 64.44 55.81 188.21 
+C 29.66 47.00 48.84 164.68 
+ABC 29.66 72.71 65.12 219.58 
+ 
+ 
+  56 
+ 
+Panel B. Test year 2018 
+Predictor Mean DV NDCG@K Precision@K LIFT 
+Subpanel A: DV = pub_w_top_5pct 
+A 4.58 45.39 33.33 727.78 
+B 4.58 41.97 33.33 727.78 
+C 4.58 49.35 33.33 727.78 
+ABC 4.58 64.48 50.00 1091.67 
+Subpanel B: DV = pub_w_top_10pct 
+A 9.92 24.73 23.08 232.54 
+B 9.92 55.81 53.85 542.60 
+C 9.92 36.38 30.77 310.06 
+ABC 9.92 65.50 61.54 620.12 
+Subpanel C: DV = pub_w_top_20pct 
+A 20.61 36.86 29.63 143.76 
+B 20.61 42.79 40.74 197.67 
+C 20.61 44.70 37.04 179.70 
+ABC 20.61 54.19 44.44 215.64 
+Subpanel D: DV = pub_w_top_30pct 
+A 29.77 36.48 33.33 111.97 
+B 29.77 49.61 38.46 129.19 
+C 29.77 45.64 41.03 137.80 
+ABC 29.77 46.00 38.46 129.19 
+ 
+Notes: This table reports the out -of-sample prediction performance of models that forecast rookie candidates’ 
+citation-weighted research productivity. The dependent variables are pub_w_top_5pct, pub_w_top_10pct, 
+pub_w_top_20pct, and pub_w_top_30pct, which are defined using candidates’ citation-weighted number of top-
+journal publications over the five -year post -graduation window.  𝑁𝑁𝑝𝑝𝑁𝑁_𝑃𝑃𝑝𝑝𝑝𝑝_𝑊𝑊𝑊𝑊𝑊𝑊𝑊𝑊ℎ𝑡𝑡𝑊𝑊𝑡𝑡𝑖𝑖= 𝑁𝑁𝑝𝑝𝑁𝑁_𝑃𝑃𝑝𝑝𝑝𝑝𝑖𝑖∗
+𝐴𝐴𝑖𝑖𝑡𝑡𝑠𝑠𝑡𝑡𝑖𝑖𝑟𝑟𝐶𝐶𝑖𝑖
+∑ 𝐴𝐴𝑖𝑖𝑡𝑡𝑠𝑠𝑡𝑡𝑖𝑖𝑟𝑟𝐶𝐶𝑘𝑘
+#𝑟𝑟𝑟𝑟𝑟𝑟𝑘𝑘𝑖𝑖𝑟𝑟𝑟𝑟 𝑟𝑟𝑜𝑜 𝑡𝑡ℎ𝑟𝑟 𝑟𝑟𝑠𝑠𝑠𝑠𝑟𝑟 𝑏𝑏𝑠𝑠𝑡𝑡𝑏𝑏ℎ
+𝑘𝑘=1
+, where 𝑁𝑁𝑝𝑝𝑁𝑁_𝑃𝑃𝑝𝑝𝑝𝑝𝑖𝑖 is the number of top journal publications for candidate i , and 
+𝐶𝐶𝑊𝑊𝑡𝑡𝐶𝐶𝑡𝑡𝑊𝑊𝑡𝑡𝐶𝐶𝑖𝑖 denotes the number of citations to all top -journal publications by candidate i . Panel A reports results 
+for test year 2017,  and Panel B reports results for test year 2018. Mean DV is the unconditional mean of the 
+dependent variable in the test sample. NDCG@K, Precision@K, and LIFT are defined in Appendix C. 
+ 
+  57 
+ 
+Table 8. Comparing the prediction performance of Model ABC and Human Selection Model for 
+citation-weighted research productivity 
+Panel A. Test year 2017 
+ 
+pub_w_top_5pct pub_ w_top_10pct pub_ w_top_20pct pub_ w_top_30pct 
+Subpanel A: Human Selection Model 
+Mean DV 4.83 9.66 20.00 29.66 
+NDCG@K 35.81 37.10 43.79 54.10 
+Precision@K 28.57 35.71 37.93 44.19 
+LIFT 591.84 369.90 189.66 149.00 
+Subpanel B: Model ABC 
+Mean DV 4.83 9.66 20.00 29.66 
+NDCG@K 29.18 57.39 60.41 72.71 
+Precision@K 28.57 50.00 51.72 65.12 
+LIFT 591.84 517.86 258.62 219.58 
+Panel B. Test year 2018 
+ 
+pub_ w_top_5pct pub_ w_top_10pct pub_ w_top_20pct pub_ w_top_30pct 
+Subpanel A: Human Selection Model 
+Mean DV 4.58 9.92 20.61 29.77 
+NDCG@K 41.58 37.50 46.81 54.85 
+Precision@K 50.00 38.46 33.33 46.15 
+LIFT 1091.67 387.57 161.73 155.03 
+Subpanel B: Model ABC 
+Mean DV 4.58 9.92 20.61 29.77 
+NDCG@K 64.48 65.50 54.19 46.00 
+Precision@K 50.00 61.54 44.44 38.46 
+LIFT 1091.67 620.12 215.64 129.19 
+ 
+Notes: This table compares the out -of-sample prediction performance of Model ABC and the Human Selection 
+Model using citation -weighted research productivity as the outcome variable. The dependent variables are 
+pub_w_top_5pct, pub_w_top_10pct, pub_w_top_20pct, and pub_w_top_30pct. The Human Selection Model uses 
+the decile ranking of the candidate’s initial placement institution as the sole predictor. Panel A reports test year 
+2017, and Panel B reports test year 2018. The results for Model ABC are copied  from Table 7. Mean DV is the 
+unconditional mean of the dependent variable in the test sample. NDCG@K, Precision@K, and LIFT are defined 
+in Appendix C.   58 
+ 
+Table 9. The 10 most important features in Model ABC and the Initial Placement Model 
+Panel A. Test year 2017 
+ Subpanel A: pub_top_5pct and job_top_5pct 
+ pub_top_5
+pct model 
+sign of 
+pub_top_5pct 
+model 
+job_top_5
+pct model 
+sign of 
+job_top_5pct 
+model 
+Difference 
+in ranking 
+Sam
+e 
+sign 
+number of awards 1 + 9 + -8 Yes 
+reference_high 2 - 89 + -87 No 
+number of top R&R 
+papers 3 + 168 + -165 Yes 
+number of 
+reviewers 4 + 48 + -44 Yes 
+coauthor_mean 5 - 248 + -243 No 
+number of 
+coauthors 6 + 38 - -32 No 
+number of 
+membership 7 - 19 - -12 Yes 
+reference_mean 8 + 11 + -3 Yes 
+number of teaching 
+experiences 9 - 26 + -17 No 
+number of R&R 
+papers 10 + 18 - -8 No 
+number of 
+published papers 13 + 7 + 6 Yes 
+reference_first 14 - 1 - 13 Yes 
+PhD_top 17 + 4 + 13 Yes 
+PrimaryResearchAr
+ea_financial 20 + 6 + 14 Yes 
+coauthor_high 58 + 5 - 53 No 
+number_of_coautho
+r_2degree 65 + 2 - 63 No 
+had non-academic 
+work 88 - 8 + 80 No 
+number of 
+presentations 110 - 10 + 100 No 
+Master_top 133 - 3 + 130 No 
+ Subpanel B: pub_top_10pct and job_top_10pct 
+ pub_top_1
+0pct 
+model 
+sign of 
+pub_top_10pc
+t model 
+job_top_1
+0pct 
+model 
+sign of 
+job_top_10pc
+t model 
+Difference 
+in ranking 
+Sam
+e 
+sign 
+number of awards 1 + 8 + -7 Yes 
+reference_first 2 - 1 - 1 Yes 
+number of 
+coauthors 3 + 46 - -43 No 
+number of 
+membership 4 - 3 - 1 Yes 
+reference_high 5 - 16 + -11 No 59 
+ 
+PhD_top 6 + 18 + -12 Yes 
+number of 
+reviewers 7 + 25 + -18 Yes 
+number of teaching 
+experiences 8 + 10 + -2 Yes 
+reference_mean 9 + 5 + 4 Yes 
+number of top R&R 
+papers 10 + 100 - -90 No 
+number of 
+presentations 12 - 6 + 6 No 
+coauthor_high 13 - 2 - 11 Yes 
+number of 
+presentations at top 
+conferences 18 - 4 + 14 No 
+number of papers in 
+progress 31 + 7 + 24 Yes 
+PrimaryResearchAr
+ea_financial 276 - 9 + 267 No 
+ Subpanel C: pub_top_20pct and job_top_20pct 
+ pub_top_2
+0pct 
+model 
+sign of 
+pub_top_20pc
+t model 
+job_top_2
+0pct 
+model 
+sign of 
+job_top_20pc
+t model 
+Difference 
+in ranking 
+Sam
+e 
+sign 
+number of 
+coauthors 1 + 12 + -11 Yes 
+number of 
+membership 2 - 5 - -3 Yes 
+reference_first 3 - 14 - -11 Yes 
+PhD_top 4 + 3 + 1 Yes 
+number of teaching 
+experiences 5 + 4 + 1 Yes 
+coauthor_high 6 - 15 - -9 Yes 
+coauthor_top 7 - 13 - -6 Yes 
+number of 
+reviewers 8 + 260 - -252 No 
+reference_high 9 - 7 + 2 No 
+number of working 
+experiences 10 - 6 + 4 No 
+number of awards 13 + 2 + 11 Yes 
+reference_mean 32 + 8 - 24 No 
+Bachelor_top 50 + 9 + 41 Yes 
+number of 
+presentations at top 
+conferences 76 + 10 + 66 Yes 
+number of 
+presentations 85 - 1 + 84 No 
+ Subpanel D: pub_top_30pct and job_top_30pct 
+ pub_top_
+30pct 
+model 
+sign of 
+pub_top_30p
+ct model 
+job_top_3
+0pct 
+model 
+sign of 
+job_top_30p
+ct model 
+Differenc
+e in 
+ranking 
+Sam
+e 
+sign 60 
+ 
+number of 
+coauthors 1 + 9 + -8 Yes 
+number of 
+membership 2 - 6 - -4 Yes 
+reference_first 3 - 4 - -1 Yes 
+PhD_top 4 + 31 + -27 Yes 
+number_of_coautho
+r_2degree 5 - 10 + -5 No 
+number of top R&R 
+papers 6 + 294 + -288 Yes 
+Master_top 7 + 251 + -244 Yes 
+coauthor_top 8 - 100 - -92 Yes 
+coauthor_high 9 - 13 - -4 Yes 
+number of 
+presentations 10 + 5 + 5 Yes 
+number of awards 12 + 2 + 10 Yes 
+reference_high 14 - 1 - 13 Yes 
+reference_mean 15 + 3 + 12 Yes 
+coauthor_mean 16 + 8 + 8 Yes 
+number of teaching 
+experiences 40 + 7 + 33 Yes 
+ 
+Panel B. Test year 2018 
+ Subpanel A: pub_top_5pct and job_top_5pct 
+ pub_top_5
+pct model 
+sign of 
+pub_top_5pct 
+model 
+job_top_5
+pct model 
+sign of 
+job_top_5pct 
+model 
+Differenc
+e in 
+ranking 
+Sam
+e 
+sign 
+reference_high 1 - 1 - 0 Yes 
+number of awards 2 + 23 + -21 Yes 
+number of reviewers 3 + 18 + -15 Yes 
+number of coauthors 4 + 39 - -35 No 
+reference_mean 5 + 13 + -8 Yes 
+reference_first 6 - 248 - -242 Yes 
+number of 
+membership 7 - 5 - 2 Yes 
+number of teaching 
+experiences 8 - 3 - 5 Yes 
+number of top 
+published papers 9 + 2 + 7 Yes 
+number of top R&R 
+papers 10 + 15 + -5 Yes 
+number of 
+presentations 11 + 4 + 7 Yes 
+number of published 
+papers 12 + 7 + 5 Yes 
+number_of_coauthor
+_2degree 14 + 6 - 8 No 
+PrimaryResearchAr
+ea_financial 21 + 8 + 13 Yes 61 
+ 
+PrimaryResearchMe
+thod_experiment 264 - 9 - 255 Yes 
+had non-academic 
+work 
+291 + 10 + 281 Yes 
+ Subpanel B: pub_top_10pct and job_top_10pct 
+ pub_top_1
+0pct 
+model 
+sign of 
+pub_top_10pc
+t model 
+job_top_1
+0pct 
+model 
+sign of 
+job_top_10pc
+t model 
+Differenc
+e in 
+ranking 
+Sam
+e 
+sign 
+reference_first 1 - 18 - -17 Yes 
+number of awards 2 + 3 + -1 Yes 
+number of coauthors 3 + 10 + -7 Yes 
+number of 
+membership 4 - 4 - 0 Yes 
+number of reviewers 5 + 16 + -11 Yes 
+coauthor_high 6 - 11 - -5 Yes 
+number of top 
+published papers 7 + 8 + -1 Yes 
+reference_high 8 - 1 - 7 Yes 
+number of top R&R 
+papers 9 + 13 + -4 Yes 
+reference_mean 10 + 7 + 3 Yes 
+PhD_top 12 + 5 + 7 Yes 
+number_of_coauthor
+_2degree 13 + 9 - 4 No 
+number of working 
+experiences 15 - 6 + 9 No 
+number of 
+presentations 18 + 2 + 16 Yes 
+ Subpanel C: pub_top_20pct and job_top_20pct 
+ pub_top_2
+0pct 
+model 
+sign of 
+pub_top_20pc
+t model 
+job_top_2
+0pct 
+model 
+sign of 
+job_top_20pc
+t model 
+Differenc
+e in 
+ranking 
+Sam
+e 
+sign 
+number of coauthors 1 + 16 + -15 Yes 
+number of 
+presentations 2 + 1 + 1 Yes 
+PhD_top 3 + 3 + 0 Yes 
+reference_first 4 - 4 - 0 Yes 
+coauthor_high 5 - 13 - -8 Yes 
+number of 
+membership 6 - 6 - 0 Yes 
+coauthor_mean 7 + 7 + 0 Yes 
+number of teaching 
+experiences 8 + 54 + -46 Yes 
+number of reviewers 9 + 19 + -10 Yes 
+number of awards 10 + 2 + 8 Yes 
+number of top 
+published papers 12 + 9 + 3 Yes 
+number of 
+presentations at top 
+conferences 15 - 10 + 5 No 62 
+ 
+reference_mean 18 - 8 - 10 Yes 
+number of working 
+experiences 159 - 5 + 154 No 
+ Subpanel D: pub_top_30pct and job_top_30pct 
+ pub_top_3
+0pct 
+model 
+sign of 
+pub_top_30pc
+t model 
+job_top_3
+0pct 
+model 
+sign of 
+job_top_30pc
+t model 
+Differenc
+e in 
+ranking 
+Sam
+e 
+sign 
+number of coauthors 1 + 36 + -35 Yes 
+reference_first 2 - 22 + -20 No 
+number of 
+membership 3 - 3 - 0 Yes 
+coauthor_high 4 - 55 - -51 Yes 
+PhD_top 5 + 1 + 4 Yes 
+coauthor_mean 6 + 222 - -216 No 
+number of 
+presentations 7 + 11 + -4 Yes 
+number of awards 8 + 4 + 4 Yes 
+Master_top 9 + 182 - -173 No 
+number of top R&R 
+papers 10 + 18 + -8 Yes 
+number of reviewers 12 + 10 + 2 Yes 
+number of top 
+published papers 16 + 5 + 11 Yes 
+number_of_coauthor
+_2degree 18 - 6 - 12 Yes 
+gender 23 + 7 + 16 Yes 
+reference_high 26 - 2 - 24 Yes 
+number of published 
+papers 29 + 9 + 20 Yes 
+has Bachelor honor 271 - 8 + 263 No 
+Notes: This table reports the 10 most important input variables, ranked by the magnitude of SHAP values, for 
+Model ABC and the Initial Placement Model in the test-year samples. Panel A reports test year 2017, and Panel B 
+reports test year 2018. For each dependent variable, rank 1 denotes the most important feature. The sign reported 
+for each feature is determined in two steps. First, we regress the SHAP value of the feature on the corresponding 
+feature value in the test sample. Then, we assign the sign of the estimated coefficient from that regression. If the 
+absolute value of the estimated coefficient is smaller than 1% of the unconditional mean of the predicted dependent 
+variable, we treat the feature as having no meaningful economic effect and assign a value of zero.  63 
+ 
+Table 10. Comparing SHARE_UNADJ and SHARE_ADJ of ML Selected Group and Human 
+Hired Group 
+Test year SHARE_UNADJ SHARE_ADJ 
+Panel A: Human Hired Group 
+2017 17.19% 18.55% 
+2018 22.77% 24.96% 
+Panel B: ML Selected Group 
+2017 31.25% 30.58% 
+2018 25.74% 30.05% 
+Notes: This table compares the publication shares of the Human Hired Group and the ML Selected Group. The 
+Human Hired Group comprises  candidates hired by the top 10 U.S. business schools in each test year. The ML 
+Selected Group consists of the same number of candidates, selected according to the highest predicted 
+probabilities from Model ABC using the pub_top_5pct specification. SHARE_UNADJ  is the share of top-journal 
+publications produced by the selected group relative to all candidates in the same cohort during the five-year post-
+graduation window. SHARE_ADJ is the corresponding share based on citation-weighted publications.
+  64 
+ 
+Table 11. OLS regression results of gap_Kpct_prob on rookie candidates’ characteristics (test 
+years 2017 and 2018 combined) 
+Panel A. Descriptive statistics of 𝒈𝒈𝒈𝒈𝒈𝒈_𝑲𝑲𝒈𝒈𝑲𝑲𝑲𝑲_𝒈𝒈𝒑𝒑𝒑𝒑𝒑𝒑 
+ 
+K=5 K=10 K=20 K=30 
+count 276 276 276 276 
+mean 0.056 0.011 -0.017 -0.009 
+std 0.153 0.086 0.078 0.088 
+min -0.496 -0.255 -0.271 -0.269 
+25% -0.039 -0.049 -0.062 -0.073 
+50% 0.044 0.026 -0.010 -0.014 
+75% 0.133 0.076 0.035 0.054 
+max 0.557 0.201 0.186 0.187 
+ 
+Panel B. OLS regression results and t stats in parenthesis 
+ 
+ K=5 K=10 K=20 K=30 
+gender -0.0359* -0.0090 0.0097 -0.0040 
+ (-1.92) (-0.86) (1.09) (-0.39) 
+second_language_asia -0.0167 -0.0036 0.0051 0.0014 
+ (-0.48) (-0.19) (0.31) (0.08) 
+second_language_euro -0.0260 -0.0107 -0.0291** -0.0551*** 
+ (-0.94) (-0.69) (-2.20) (-3.66) 
+PhD_top10 -0.0373 -0.0281* -0.0250* -0.0261 
+ (-1.22) (-1.64) (-1.71) (-1.58) 
+reference_top 0.0015 0.0174* 0.0492*** 0.0403*** 
+ (0.08) (1.66) (5.56) (4.00) 
+ 
+Notes: This table reports descriptive statistics and OLS regression results for gap_Kpct_prob using the pooled 
+test-year sample from 2017 and 2018.  gap_Kpct_prob is defined as the predicted probability of pub_top_Kpct 
+from Model ABC minus the predicted probability of job_top_Kpct  from the Initial Placement Model. The Initial 
+Placement Model uses the same predictor sets A, B, and C as Model ABC  but predicts the likelihood that the 
+candidate’s initial placement institution ranks in the top K percent. Panel A reports descriptive statistics. Panel B 
+reports OLS coefficient estimates, with t- statistics in parentheses. gender  equals one if the applicant is male and 
+zero otherwise. second_language_asia equals one if the applicant reports proficiency in an Asian language other 
+than English, and zero otherwise. second_language_euro  equals one if the applicant reports proficiency in a 
+European language other than English, and zero otherwise. PhD_top10 equals one if the applicant received the 
+PhD from a top-10 business school, and zero otherwise. reference_top equals one if the applicant’s first reference 
+is ranked in the top 10 percent of the BYU individual ranking in that year, and zero otherwise.  65 
+ 
+Appendix A. Variable definitions 
+variable name data source definition 
+Panel A: dependent variables 
+pub_top_5pct hand-collect 
+The dummy indicating whether the candidate ’s 
+number of publications on the top 11 journals 
+(listed in the data source section ) during the 5 
+years starting from the batch year (e.g., 
+2018.1~2022.12 for the 2017/2018 batch) is 
+among the top 5% of his/her peers who apply to 
+the Miami Camp in the same year 
+pub_top_10pct hand-collect 
+The dummy indicating whether the candidate ’s 
+number of publications on the top 11 journals 
+(listed in the data source section ) during the 5 
+years starting from the batch year (e.g., 
+2018.1~2022.12 for the 2017/2018 batch) is 
+among the top 10% of his/her peers who apply to 
+the Miami Camp in the same year 
+pub_top_20pct hand-collect 
+The dummy indicating whether the candidate ’s 
+number of publications on the top 11 journals 
+(listed in the data source section ) during the 5 
+years starting from the batch year (e.g., 
+2018.1~2022.12 for the 2017/2018 batch) is 
+among the top 20% of his/her peers who apply to 
+the Miami Camp in the same year 
+pub_top_30pct hand-collect 
+The dummy indicating whether the candidate ’s 
+number of publications on the top 11 journals 
+(listed in the data source section ) during the 5 
+years starting from the batch year (e.g., 
+2018.1~2022.12 for the 2017/2018 batch) is 
+among the top 30% of his/her peers who apply to 
+the Miami Camp in the same year 
+job_top_5pct hand-collect; US 
+News; QS 
+The dummy indicates whether the candidate ’s 
+first placement university is among the top 5% of 
+his/her peers who apply to the Miami Camp in the 
+same year. The university rank is the combined 
+historical rank from U.S. News and QS World 
+University Rankings. 
+job_top_10pct hand-collect; US 
+News; QS 
+The dummy indicates whether the candidate ’s 
+first placement university is among the top 10% 
+of his/her peers who apply to the Miami Camp in 
+the same year. The university rank is the 
+combined historical rank from U.S. News and QS 
+World University Rankings. 
+job_top_20pct hand-collect; US 
+News; QS 
+The dummy indicates whether the candidate ’s 
+first placement university is among the top 20% 
+of his/her peers who apply to the Miami Camp in 
+the same year. The university rank is the 
+combined historical rank from U.S. News and QS 
+World University Rankings. 
+job_top_30pct hand-collect; US 
+News; QS 
+The dummy indicates whether the candidate ’s 
+first placement university ranks  among the top 
+30% of his/her peers who apply to the Miami 
+Camp in the same year. The university rank is the 
+combined historical rank from U.S. News and QS 
+World University Rankings. 66 
+ 
+   
+Panel B: variables extracted directly from the CV without background knowledge (Predictors A) 
+gender CV 1 for male, 0 for female 
+has Bachelor honor CV 
+A dummy indicating whether the candidate listed 
+any honors obtained during the Bachelor's  stage 
+in the CV 
+has Master honor CV 
+A dummy indicating whether the candidate listed 
+any honors obtained during the Master's stage in 
+the CV 
+has PhD honor CV 
+A dummy indicating whether the candidate listed 
+any honors obtained during the Ph.D. stage in the 
+CV 
+number of published papers CV The total number of published papers listed in the 
+CV 
+number of R&R papers CV The total number of papers that got an R&R listed 
+in the CV 
+number of papers in progress CV The total number of papers in progress listed in 
+the CV 
+has_coauthor CV The dummy indicating whether the candidate 
+mentioned any coauthor in the CV 
+has_reference CV The dummy indicates whether the candidate 
+mentioned any reference in the CV 
+number of coauthors CV The number of coauthors mentioned in the CV 
+number of presentations CV The total number of conference or workshop 
+presentations listed in the candidate's CV 
+number of teaching experiences CV The total number of teaching experiences listed 
+in the CV 
+number of awards CV The total number of academic awards listed in the 
+CV 
+number of reviewers CV The number of journals or associations where the 
+candidate serves as a reviewer listed in the CV 
+number of membership CV The number of memberships listed in the CV 
+number of working experiences CV The number of working experiences listed in the 
+CV 
+had academic work CV 
+The dummy indicates whether the candidate had 
+academic employment experience mentioned in 
+the CV 
+had non-academic work CV 
+The dummy indicates whether the candidate had 
+non-academic working experience mentioned in 
+the CV 
+provide abstract CV The dummy indicates whether the candidate 
+presents abstracts of any papers in the CV 
+PrimaryResearchArea_financial CV A dummy indicating that the candidate’s primary 
+research area is financial accounting 
+PrimaryResearchArea_auditing CV A dummy indicating that the candidate’s primary 
+research area is auditing 
+PrimaryResearchArea_tax CV A dummy indicating that the candidate’s primary 
+research area is tax  
+PrimaryResearchArea_managerial CV A dummy indicating that the candidate’s primary 
+research area is managerial accounting  
+PrimaryResearchMethod_archival CV A dummy indicating that the candidate’s primary 
+research method is archival empirical methods 67 
+ 
+PrimaryResearchMethod_experim
+ental CV A dummy indicating that the candidate’s primary 
+research method is experimental methods 
+PrimaryResearchMethod_analytic
+al CV A dummy indicating that the candidate’s primary 
+research method is analytical methods 
+multi_language CV A dummy indicating that the candidate speaks 
+more than one language 
+   
+Panel C: variables extracted from CV combined with background knowledge  (Predictors B) 
+bachelor_top CV; US News 
+A dummy indicating whether the candidate 
+earned a bachelor’s degree from one of the top 50 
+business schools in the US. The university name 
+is from the “ Bachelor's degree” item output by 
+GPT. The rank is the historical university rank 
+from US News.  
+master_top CV; US News 
+A dummy indicating whether the candidate 
+earned a master ’s degree from one of the top 50 
+business schools in the US. The university name 
+is from the “ Master’s degree ” item output by 
+GPT. The rank is the historical university rank 
+from US News. 
+phd_top CV; US News 
+A dummy indicating whether the candidate 
+earned the PhD degree from one of the top 50 
+business schools in the US. The university name 
+is from the “PhD degree ” item output by GPT. 
+The rank is the historical university rank from US 
+News. 
+visit_top CV; US News 
+A dummy indicating whether the candidate has 
+ever visited the top 50 business schools in the US. 
+The university names are from the “visiting 
+experience” item output by GPT. The rank is the 
+historical university rank from US News. 
+number of top published papers CV; field 
+knowledge 
+The total number of papers that are listed in the 
+CV and published in the 11 top journals (listed in 
+the data source section ). The journal names are 
+from the “published journal list” by GPT.  
+number of top R&R papers CV; field 
+knowledge 
+The total number of papers that are listed in the 
+CV and received  an R&R in the 11 top journals 
+(listed in the data source section ). The journal 
+names are from the “R&R journal list” by GPT. 
+coauthor_mean CV; BYU 
+The average rank of all the coauthors mentioned 
+in the CV. The rank is from the historical 
+individual rank from the BYU website in the year 
+prior to the candidate’s batch year. The coauthor 
+names are from the “coauthor list” item by GPT. 
+If no coauthor is mentioned, fill 0.11 
+coauthor_high CV; BYU 
+The highest rank of all the coauthors mentioned 
+in the CV. The rank is from the historical 
+individual rank from the BYU website in the year 
+prior to the candidate’s batch year. The coauthor 
+names are from the “coauthor list” item by GPT. 
+If no coauthor is mentioned, fill 0. 
+ 
+11 We define a variable has_coauthor to identify the missing cases. 68 
+ 
+number_of_coauthor_2nd_degree
+12 CV; BYU 
+The total number of coauthors of all the coauthors 
+mentioned in the CV. The coauthors of each 
+coauthor are from the BYU website page for each 
+individual accounting scholar. If the coauthor 
+does not have a page on the BYU website, we 
+assume the coauthor is not well known and do not 
+count them . The coauthor names are from the 
+“coauthor list” item by GPT. 
+coauthor_top CV; BYU 
+A dummy of whether any one of the candidate ’s 
+coauthors mentioned in the CV is a top scholar 
+(top scholar is defined as the scholar ranked in the 
+top 1% on the BYU website in the application 
+year). The coauthor names are from the “coauthor 
+list” item by GPT. 
+number of top conference 
+presentation 
+CV; field 
+knowledge 
+The total number of presentations at top 
+accounting conferences, including the American 
+Accounting Association (AAA) annual 
+conference, the Journal of Accounting and 
+Economics (JAE) conference, the Contemporary 
+Accounting Research (CAR) conference, the 
+Journal of Accounting Research (JAR) 
+conference, Review of Accounting Studies 
+(RAS) conference, Financial Accounting and 
+Reporting Midyear meeting, Managerial 
+Accounting Midyear Meeting, Journal of the 
+American Taxation Association (JATA) 
+conference. 
+reference_first CV; BYU 
+The rank of the first name in the reference list in 
+the year prior to the candidate ’s batch year. The 
+rank is the historical individual rank from the 
+BYU website. The reference names are from the 
+“references” item by GPT. If no reference name 
+is mentioned, fill 0.13 
+reference_mean CV; BYU 
+The average rank of the reference names in the 
+year prior to the candidate’s batch year. The rank 
+is the historical individual rank from the BYU 
+website. The reference names are from the 
+“references” item by GPT.  If no reference name 
+is mentioned, fill 0. 
+reference_high CV; BYU 
+The highest rank of the reference names in the 
+year prior to the candidate’s batch year. The rank 
+is the historical individual rank from the BYU 
+website. The reference names are from the 
+ 
+12 number_of_coauthor, number_of_coauthor_2nd_degree, and coauthor ranks (i.e., coauthor_top, 
+coauthor_high, coauthor_mean) are all network related variables. Ductor et al. (2014) also include measures such 
+as “closeness centrality” and “betweenness centrality”. We didn’t include these measures for two reasons: 1. Their 
+work focuses on all economic scholars, but we only focus on rookies. Rookies usually do not form very complex 
+coauthorship networks, so these measures are highly correlated with existing variables. They may not add much 
+incremental information.  2. Their work constructs a network from EconLit. Our coauthorship data come from 
+individual CVs and the BYU website, which includes only prestigious scholars. So our network is  incomplete, 
+making these measures inaccurate and less relevant.    
+13 We define a variable has_reference to identify the missing cases.  69 
+ 
+“references” item by GPT.  If no reference name 
+is mentioned, fill 0. 
+second_language_Asia CV; knowledge 
+A dummy indicating that the candidate speaks a 
+second language besides English and that the 
+language is from an Asian country.  
+second_language_Euro CV; knowledge 
+A dummy indicating that the candidate speaks a 
+second language besides English and that the 
+language is from a European country.   
+   
+Panel D: embeddings from the dissertation by Text-Embedding-3-Large (Predictors C) 
+1_dt ~ 256_dt dissertation 
+256 variables obtained by applying Text -
+Embedding-3-Large to the dissertations ’ title, 
+abstract, and introduction section , and only 
+keeping the first 256 numbers of the embeddings. 
+   
+Panel E: initial placement rank 
+Placerank 
+US News; QS 
+University 
+Rankings 
+This is the rank of the candidate's first placement 
+institution. Each year, we first identify the top 80 
+schools based on the combined rankings from 
+U.S. News and QS. Then we rank the placement 
+schools of rookies. In each year, for the samples 
+that get jobs at the top 80 schools, we group them 
+into deciles by rank and define the Place_rank 
+variable as 1-10, where 1 denotes the top schools. 
+For the samples that don’t have a job on the top 
+80 schools, their Place_rank variable is set to 11. 
+ 
+ 
+  70 
+ 
+Appendix B. The IPW procedure 
+ We implement the inverse probability weighting (IPW) procedure following Swaminathan and 
+Joachims (2015) and Schnabel et al. (2016). Because the method requires a dichotomous treatment 
+indicator, we classify initial placement institutions as either research-oriented or non-research-oriented. 
+We assume that institutions within each category are relatively homogeneous in research intensity. 
+ We determine research orientation using region -specific classification systems to ensure 
+comparability across countries. For institutions located in the United States, we rely on the Carnegie 
+Classification of Institutions of Higher Education. Specifically, we designate an institution as research-
+oriented if it qualifies as a Research 1 (R1) university, defined as spending at least USD 50 million on 
+research and development (R&D) and awarding at least 70 research doctorates annually. 
+ For institutions located in Europe, we use the European Tertiary Education Register (ETER), 
+which provides standardized institution- level information on doctoral education and research 
+expenditures. To maintain consistency with the U.S. Carnegie criteria, we classify a European 
+institution as research-oriented if it awards more than 70 doctoral degrees per year and reports annual 
+R&D expenditures exceeding USD 50 million. 
+ For institutions outside the United States and Europe, we identify research-oriented universities 
+using widely recognized national classifications of research-intensive institutions. In mainland China, 
+we classify “985” universities and “211/Double First Class” universities as research -oriented. In 
+Taiwan, we classify National Taiwan University as research-oriented. In South Korea, we include Seoul 
+National University, KAIST, POSTECH, SKKU, Yonsei University, and Korea University. In 71 
+ 
+Australia, we include the Group of Eight (Go8) universities. In Singapore, we include NUS, NTU, and 
+SMU. In Hong Kong, we classify the five leading research universities —HKU, CUHK, HKUST, 
+PolyU, and CityU —as research -oriented. In Canada, we include the U15  Research Universities. All 
+remaining institutions in our sample are classified as non-research-oriented. 
+ We next estimate a logit model of a candidate’s initial placement type. The dependent variable, 𝐷𝐷𝑖𝑖, 
+is an indicator equal to one if the candidate’s initial placement institution is classified as research -oriented 
+and zero otherwise. We model 𝐷𝐷𝑖𝑖as a function of the predictor set used in the machine learning model. For 
+instance, if the machine learning model uses predictor set ABC, we also use ABC in the logit model. 
+The model is estimated separately for each test year using the corresponding training sample. The 
+logit specification is as follows: 
+Pr(𝐷𝐷𝑖𝑖= 1|𝑋𝑋𝑖𝑖) = 𝑊𝑊(𝑋𝑋𝑖𝑖; 𝛾𝛾) 
+To ensure that the IPW procedure is well behaved, we first examine the empirical distribution 
+of the estimated propensity scores, 𝑊𝑊̂(𝑋𝑋𝑖𝑖), and trim observations with 𝑊𝑊̂(𝑋𝑋𝑖𝑖) outside the interval ([0.05, 
+0.95]) (Crump, Hotz, Imbens, and Mitnik 2009; Austin and Stuart 2015) . Candidates with extreme 
+propensity scores are effectively deterministically assigned to one institutional type, conditional on 𝑋𝑋𝑖𝑖, 
+and their inclusion would produce excessively large weights and increase the estimator's variance. 
+As a diagnostic, we evaluate common support and covariate balance by comparing standardized 
+mean differences in the primary predictors 𝑋𝑋𝑖𝑖 between research- and non-research-oriented institutions, 
+both before and after applying the IPW weights. We consider the IPW adjustment successful if the 
+absolute standardized differences decline substantially after weighting, indicating improved balance 72 
+ 
+across treatment groups.  We find that IPW adjustment improves overall covariate balance across 
+treatment groups (untabulated). 
+Next, we use the estimated propensity scores to construct stabilized inverse probability weights 
+that generate a pseudo-population in which institutional type is independent of candidate characteristics, 
+conditional on 𝑋𝑋𝑖𝑖 . Let 𝑝𝑝̂=
+1
+𝑁𝑁∑ 𝐷𝐷𝑖𝑖 𝑖𝑖denote the empirical fraction of candidates placed at research -
+oriented institutions in the training sample for a given test year. For each candidate 𝑊𝑊, w
+e define the 
+stabilized weight following Hernán and Robins (
+2020) as follows: 
+𝑤𝑤𝑖𝑖= 𝑝𝑝̂
+𝑊𝑊̂(𝑋𝑋𝑖𝑖) 𝐷𝐷𝑖𝑖+ 1 − 𝑝𝑝̂
+1 − 𝑊𝑊̂(𝑋𝑋𝑖𝑖) (1 − 𝐷𝐷𝑖𝑖) 
+Intuitively, candidates whose realized institutional type is unlikely given their observed 
+characteristics— for example, high-potential candidates placed at non-research-oriented institutions or 
+lower-potential candidates placed at research -oriented institu tions— receive larger weights. These 
+observations are particularly informative about how research productivity varies with 𝑋𝑋𝑖𝑖  when the 
+assignment to institutional type is less strongly aligned with observable characteristics.  To further 
+reduce the influence of extreme weights, we truncate 𝑤𝑤𝑖𝑖 at the 5th and 95th percentiles of its empirical 
+distribution. Finally, we re -estimate our research productivity prediction models using the stabilized 
+IPW weights. 73 
+ 
+Appendix C. Prediction performance metrics 
+metrics definition 
+Mean DV The unconditional mean of the dependent variable 
+NDCG@K Normalized Discounted Cumulated Gain at the position K. K is equal to the 
+unconditional mean of the dependent variable in the test set  
+Precision@K The percentage of candidates among the top 𝐾𝐾 ranked by predicted probabilities in 
+a given test year whose actual research productivity falls within the top 𝐾𝐾 of 
+candidates in the test year 
+LIFT Precision@K as a percentage of Mean DV , representing the accuracy of a prediction 
+model relative to a random classification benchmark 74 
+ 
+Online appendix 
+ 
+  75 
+ 
+Table OA1. Prompting Using GPT-4 
+  
+As a recruitment member of the accounting department of a university. Your task is to process the CV texts of 
+candidates, extract the information I want to structural output. Here is the list of the information I want from their CVs.  
+1. Name 
+2. Education experience 
+3. Employment experience 
+4. Research interest 
+5. Publication 
+6. Working paper 
+7. Conference presentation 
+8. Teaching experience 
+9. Awards 
+10. Professional service and membership 
+11. Reference 
+12. Language 
+Present your findings as a single JSON object, conforming to the following structure:  
+```{ 
+ "name": "name of the candidate", 
+ "Bachelor degree": "the name of the university where the candidate got the bachelor degree (Do not include the 
+country. Do not include the school name or department name, just the name of the university.)",  
+ "has Bachelor honor": 1 if the candidate has an honor in bachelor stage, 0 otherwise,  
+ "Master degree":  "the name of the university where the candidate got the master degree (do not include the country. 
+Do not include the school name or department name, just the name of the university.)", 
+ "has Master honor": 1 if the candidate has an honor in Master stage, 0 otherwise,  
+ "PhD degree": "the name of the university where the candidate will get the PhD degree (do not include the country. 
+Do not include the school name or department name, just the name of the university.)",  
+ "has PhD honor": 1 if the candidate has an honor (e.g., Summa Cum Laude) in PhD stage, 0 otherwise,  
+ "visiting experience": the list of universities (note: not school names) the candidate visited as a visiting PhD or 
+visiting scholar(do not include the country), in the form of a list ["university 1","university 2",...], 
+ “research interest”: the text describing the research interests of the candidate,  
+ "papers": the list of paper including the following attributes: title,coauthor (if no coauthor, say "solo"), journal (if not 
+under review, leave this blank), status (including under review, revise and resubmit(R&R), published), 
+ "number of published papers": the number of published papers, 0 if no publication, 
+ "published journal list": the list of the journals if the candidate has published papers like ["journal 1", "journal 2"], 
+blank list if no publication, 
+ "number of R&R papers": the number of papers that get revise and resubmit (R&R) by journals (note that under 
+review is not R&R), 
+ "R&R journal list": the list of the journals gave an R&R to the candidate like ["journal 1", "journal 2"], 
+ "number of papers in progress": the number of papers that are not published or get an R&R, 
+ "coauthor list": the list of all the coauthors of all the papers of the candidate like ["coauthor 1","coauther 2",...], 
+ “number of coauthors”: the number of coauthors of all the papers mentioned in this CV,  
+ "conference presentation": the list of conferences the candidate participated (including academic conferences and 
+workshops), 
+ "number of presentations": the total number of presentations, including academic conferences, workshops, etc. 
+ "number of presentations at top conferences": the total number of presentations at top conferences, including
+ 
+American Accounting Association (AAA) annual conference, Journal of Accounting and Economics (JAE) conference,  
+Contemporary Accounting Research (CAR) conference, Journal of Accounting Research (JAR) conference, Review of 
+Accounting Studies (RAS) conference, Financial Accounting and Reporting Midyear meeting, Managerial Accounting 
+Midyear Meeting, Journal of the American Taxation Association (JATA) conference.  
+ "Teaching experiences": the list of teaching experiences in the form of ["experience 1","experience 2",......],  
+ "number of teaching experiences": the number of teaching experiences, 
+ "academic awards": the list of academic awards, 
+ “number of awards”: the number of academic awards,  
+ "reviewer": the list of journals or associations where the candidate serves as ad hoc reviewer, 
+ “number of reviewers”: the number of journals or associations where the candidate serves as ad hoc reviewer, 
+ "membership": the associations that the candidate join as a member, 
+ “number of membership”: the number of associations that the candidate join as a member, 
+ "number of working experiences": the number of working experiences, 
+ "had academic work": 1 if the candidate has worked in academic institutions, 0 otherwise, 
+ "had non-academic work": 1 if the candidate has worked outside academic institutions, 0 otherwise, 
+ "references": the list of names of the references like ["name 1","name 2"] (remove the titles like professor, prof, Dr, 
+etc.), 
+ "provide abstract": 1 if the candidate presents the abstracts of the papers in the CV file, 0 otherwise, 
+ "abstract list": the list of the abstracts in the form of ["abstract 1", "abstract 2",......]  
+ “language list”: the list of languages that the candidate speak in the form of [“language 1”,”language 2”,…], blank if 
+not mentioned.  
+}``` 
+If any of the above information is not mentioned in the CV profile, just fill the item with a blank. Your output should 
+be a single valid JSON object and should not contain any additional or explanatory text. Here is the text of the candidate CV:  
+ 76 
+ 
+Assessing the accuracy of GPT’s feature extraction from resumes 
+To evaluate the accuracy of GPT in converting resumes into structured variables, we randomly 
+selected 20 samples from all CV files and tasked a research assistant (RA) with manually extracting 
+attributes from these CVs using the same prompting format shown  in Table OA1. We then compared 
+the numeric predictors derived from GPT to those extracted by the RA. Table OA2 summarizes the 
+discrepancies between GPT ’s outputs and the RA ’s results, including the number of mismatched 
+samples and the mean absolute error (MAE) for each variable. 
+Of the 17 variables analyzed, GPT achieved perfect extraction accuracy for six and made fewer 
+than ten errors for an additional nine. Only two variables —the number of papers in progress and the 
+number of presentations —had error rates exceeding 50%. These inaccuracies likely reflect 
+inconsistencies and lack of transparency in how applicants disclose this information, which complicates 
+accurate extraction. Despite these discrepancies, the mean absolute errors are general ly small and 
+statistically insignificant for most predictors, indicating that GPT's extraction performance is acceptable 
+for the majority of variables. 
+ 
+  77 
+ 
+Table OA2. Accuracy of 20 randomly selected samples: comparing GPT with human RAs 
+  #(GPT≠RA) Mean Absolute Error 
+has Bachelor honor 0 0 
+has Master honor 0 0 
+has PhD honor 0 0 
+had non-academic work 0 0 
+provide abstract 0 0 
+multi_language 0 0 
+number of R&R papers 2 0.10 
+number of published papers 3 0.35 
+number of membership 3 0.25 
+number of reviewers 4 0.50 
+number of awards 6 0.50 
+number of coauthors 7 0.65 
+number of working experiences 7 0.55 
+number of teaching experiences 8 1.20 
+had academic work 9 0.45 
+number of papers in progress 12 1.35 
+number of presentations 12 3.10 
+ 
+Notes: This table compares the structured variables extracted by GPT with those manually extracted by a research 
+assistant from 20 randomly selected CVs. The first column reports the number of cases in which the GPT 
+extraction differs from the research ass istant’s extraction. The second column reports the mean absolute error 
+between the two extraction methods. See Appendix A for variable definitions. 
+ 
+  78 
+ 
+Table OA3. Prediction performance of the Initial Placement Model  
+Panel A: test year 2017 
+Predictor Mean DV NDCG@K Precision@K LIFT 
+Subpanel A: DV = job_top_5pct 
+A 4.83 11.84 14.29 295.92 
+B 4.83 0.00 0.00 0.00 
+C 4.83 0.00 0.00 0.00 
+ABC 4.83 11.84 14.29 295.92 
+Subpanel B: DV = job_top_10pct 
+A 7.59 13.15 18.18 239.67 
+B 7.59 10.37 9.09 119.83 
+C 7.59 22.31 27.27 359.50 
+ABC 7.59 8.93 9.09 119.83 
+Subpanel C: DV = job_top_20pct 
+A 17.24 23.67 24.00 139.20 
+B 17.24 31.59 32.00 185.60 
+C 17.24 55.65 56.00 324.80 
+ABC 17.24 38.06 32.00 185.60 
+Subpanel D: DV = job_top_30pct 
+A 28.97 33.34 35.71 123.30 
+B 28.97 29.29 26.19 90.42 
+C 28.97 48.38 38.10 131.52 
+ABC 28.97 40.43 35.71 123.30 
+ 
+  79 
+ 
+Panel B: test year 2018 
+Predictor Mean DV NDCG@K Precision@K LIFT 
+Subpanel A: DV = job_top_5pct 
+A 3.82 0.00 0.00 0.00 
+B 3.82 36.01 40.00 1048.00 
+C 3.82 0.00 0.00 0.00 
+ABC 3.82 69.92 60.00 1572.00 
+Subpanel B: DV = job_top_10pct 
+A 8.40 20.74 9.09 108.26 
+B 8.40 36.95 36.36 433.06 
+C 8.40 25.32 27.27 324.79 
+ABC 8.40 52.98 45.45 541.32 
+Subpanel C: DV = job_top_20pct 
+A 19.85 26.60 23.08 116.27 
+B 19.85 35.23 30.77 155.03 
+C 19.85 51.18 46.15 232.54 
+ABC 19.85 41.26 34.62 174.41 
+Subpanel D: DV = job_top_30pct 
+A 29.77 54.03 58.97 198.09 
+B 29.77 47.79 46.15 155.03 
+C 29.77 56.41 56.41 189.48 
+ABC 29.77 68.97 64.10 215.32 
+ 
+Notes: These tables report the out -of-sample prediction performance of the Initial Placement Model, which 
+predicts whether a candidate’s initial placement institution falls within the top K percent of the cohort in the same 
+year. Panel A reports results for test year 2017, and Panel B reports results for test year 2018. Predictor sets A, B, 
+and C and the ensemble model ABC are defined as in Table 3. Mean DV is the unconditional mean of the 
+dependent variable in the test sample. NDCG@K, Precision@K, and LIFT are defined in Appendix C. 
+ 

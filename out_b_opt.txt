@@ -1,0 +1,61 @@
+/Users/xiaofeichen/opt/anaconda3/envs/myenv/lib/python3.10/site-packages/google/api_core/_python_version_support.py:273: FutureWarning: You are using a Python version (3.10.18) which Google will stop supporting in new releases of google.api_core once it reaches its end of life (2026-10-04). Please upgrade to the latest Python version, or at least Python 3.11, to continue receiving updates for google.api_core past that date.
+  warnings.warn(message, FutureWarning)
+/Users/xiaofeichen/Downloads/chenxiaofeiandongjunhui/main_clean_feature_injector_optimized.py:6: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as genai
+
+Running Refactored Strategy B: Post-Hoc Feature Injector...
+
+Executing True Text Validation on Top 20...
+  ID 494 (Vanilla Rank 1) -> Causal: 0, Novel: 0
+  ID 513 (Vanilla Rank 2) -> Causal: 0, Novel: 0
+  ID 510 (Vanilla Rank 3) -> Causal: 1, Novel: 0
+  ID 546 (Vanilla Rank 4) -> Causal: 0, Novel: 0
+  ID 537 (Vanilla Rank 5) -> Causal: 0, Novel: 1
+  ID 475 (Vanilla Rank 6) -> Causal: 0, Novel: 0
+  ID 501 (Vanilla Rank 7) -> Causal: 0, Novel: 1
+  ID 561 (Vanilla Rank 8) -> Causal: 0, Novel: 0
+  ID 439 (Vanilla Rank 9) -> Causal: 1, Novel: 1
+  ID 459 (Vanilla Rank 10) -> Causal: 0, Novel: 0
+  ID 496 (Vanilla Rank 11) -> Causal: 0, Novel: 0
+  ID 554 (Vanilla Rank 12) -> Causal: 0, Novel: 0
+  ID 538 (Vanilla Rank 13) -> Causal: 0, Novel: 0
+  ID 493 (Vanilla Rank 14) -> Causal: 0, Novel: 1
+  ID 452 (Vanilla Rank 15) -> Causal: 1, Novel: 0
+  ID 505 (Vanilla Rank 16) -> Causal: 0, Novel: 1
+  ID 512 (Vanilla Rank 17) -> Causal: 0, Novel: 0
+  ID 449 (Vanilla Rank 18) -> Causal: 1, Novel: 1
+  ID 442 (Vanilla Rank 19) -> Causal: 0, Novel: 1
+  ID 548 (Vanilla Rank 20) -> Causal: 1, Novel: 0
+
+==================================================
+ STRATEGY B: OPTIMIZED POST-HOC GRID SWEEP (K=8)
+==================================================
+
+[ REWARD = +1.0 ]
+Precision@K: 37.50%
+NDCG@K: 40.34%
+LIFT: 1091.67%
+ROC-AUC: 95.33%
+F1-Score: 42.86%
+
+[ REWARD = +1.5 ]
+Precision@K: 37.50%
+NDCG@K: 34.28%
+LIFT: 1091.67%
+ROC-AUC: 94.93%
+F1-Score: 42.86%
+
+[ REWARD = +2.0 ]
+Precision@K: 37.50%
+NDCG@K: 33.90%
+LIFT: 1091.67%
+ROC-AUC: 95.07%
+F1-Score: 42.86%
+

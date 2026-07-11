@@ -1,0 +1,132 @@
+csv_candidate_id,folder_name,candidate_name,true_label_pub_w_top_5pct,jmp_intro_char_limit,gpt2_pred,gemini_pred
+439,2126 - Sehwa Kim,Sehwa Kim,0,23847,0.0,0.92
+440,2127 - Anya Nakhmurina,Anya Nakhmurina,0,31871,0.0,0.95
+441,2129 - Ruby Lee,Ruby Lee,0,21534,0.0,0.0
+442,2138 - Jody Grewal,Jody Grewal,1,28559,0.0,0.9
+443,2162 - June Woo Park,June Woo Park,0,9943,0.0,0.0
+444,2171 - Pedro Gomez,Pedro Gomez,0,8038,0.0,0.0
+445,2191 - Haimeng Teng,Haimeng Teng,0,20423,0.0,0.0
+446,2194 - Tongqing Ding,Tongqing Ding,0,45077,0.0,0.0
+447,2209 - Cristina Grande Herrera,Cristina Grande Herrera,0,21738,0.0,0.0
+448,2228 - Wenjie Xue,Wenjie Xue,0,22246,0.0,0.0
+449,2241 - Huihao Yan,Huihao Yan,0,20279,0.0,0.0
+450,2245 - Hyun Hwang,Hyun Hwang,0,22823,0.0,0.0
+451,2247 - Tingting Ye,Tingting Ye,0,21217,0.0,0.0
+452,2251 - Albert Mensah,Albert Mensah,0,22219,0.0,0.0
+453,2261 - Jakob Infuehr,Jakob Infuehr,0,16909,0.0,0.0
+454,2294 - Md Safayat Hossain,Md Safayat Hossain,0,1171,0.0,0.0
+455,2297 - Jin Jiang,Jin Jiang,0,23614,0.0,0.0
+456,2300 - Daun Jang,Daun Jang,0,19695,0.0,0.0
+457,2312 - Yi-Chun Chen,Yi-Chun Chen,0,25551,0.0,0.0
+458,2315 - Yusiyu Wang,Yusiyu Wang,0,26627,0.0,0.0
+459,2322 - Manuela Dantas,Manuela Dantas,0,18894,0.0,0.0
+460,2336 - Nicholas Martin,Nicholas Martin,0,24271,0.0,0.0
+461,2338 - Ling Yang,Ling Yang,0,19676,0.0,0.0
+462,2339 - Siman Li,Siman Li,0,19478,0.0,0.0
+463,2344 - Binghao (Jimmy) Zhao,Binghao (Jimmy) Zhao,0,18001,0.0,0.0
+464,2352 - CHANGWOOK LEE,Changwook Lee,0,22566,0.0,0.0
+465,2387 - Yoon Hoo Kim,Yoon Hoo Kim,0,19917,0.0,0.0
+466,2389 - Xuanjun DONG,Xuanjun Dong,0,19354,0.0,0.0
+467,2427 - Jonghan Park,Jonghan Park,0,8164,0.0,0.0
+468,2428 - Zhe Wang,Zhe Wang,0,6000,0.0,0.0
+469,2436 - Laura Alford,Laura Alford,0,19836,0.0,0.0
+470,2489 - Bobo Zhang,Bobo Zhang,0,25608,0.0,0.0
+471,2503 - Xiaoli Guo,Xiaoli Guo,0,20123,0.0,0.85
+472,2513 - Di Guo,Di Guo,0,20832,0.0,0.0
+473,2520 - Yan Zhao,Yan Zhao,0,22908,0.0,0.0
+474,2574 - Xiang-Yu Huang,Xiang-Yu Huang,0,20022,0.0,0.0
+475,2606 - Lin Qiu,Lin Qiu,0,19868,0.0,0.0
+476,"750 - van Pelt, Victor",Victor Van Pelt,0,20671,0.0,0.0
+477,"751 - Duguay, Raphael",Raphael Duguay,0,23209,0.0,0.0
+478,"754 - Rane, Scott",Scott Rane,0,22767,0.0,0.0
+479,"755 - Vakil, Tara",Tara Vakil,0,21180,0.0,0.0
+480,"756 - Xu, Nina",Nina Xu,0,21304,0.0,0.0
+481,"757 - Lind, Gary",Gary Lind,0,20562,0.0,0.0
+482,"762 - Basu, Riddha",Riddha Basu,0,22054,0.0,0.0
+483,"763 - Ferracuti, Elia",Elia Ferracuti,0,22760,0.0,0.0
+484,"766 - Sinha, Kirti",Kirti Sinha,0,26039,0.0,0.88
+485,"768 - Copat, Rafael",Rafael Copat,0,23815,0.0,0.0
+486,"772 - Stuber, Sarah",Sarah Stuber,0,21786,0.0,0.0
+487,"773 - Rozario, Andrea",Andrea Rozario,0,21428,0.0,0.0
+488,"777 - Schmidt, Brent",Brent Schmidt,0,21905,0.0,0.0
+489,"779 - Clark, Jeffrey",Jeffrey Clark,0,18980,0.0,0.0
+490,"780 - Samet, Jordan",Jordan Samet,0,18565,0.0,0.0
+491,"781 - Park, Hyun Jong",Hyun Jong Park,0,20403,0.0,0.0
+492,"782 - Zhang, Wei",Wei Zhang,0,19929,0.0,0.0
+493,"784 - Khavis, Joshua",Joshua Khavis,1,21315,0.0,0.0
+494,"789 - Codesso, Mauricio",Mauricio Codesso,1,10478,0.0,0.0
+495,"790 - Yatsenko, Dimitri",Dimitri Yatsenko,0,19105,0.0,0.0
+496,"791 - Tien, Terence K.M",Terence K.M Tien,0,16735,0.0,0.0
+497,"792 - Shafron, Emily",Emily Shafron,0,25202,0.0,0.0
+498,"793 - Potter, Chase",Chase Potter,0,23963,0.0,0.0
+499,"795 - Park, Min",Min Park,0,18801,0.0,0.0
+500,"801 - D'Adduzio, Jenna",Jenna D'Adduzio,0,23654,0.0,0.0
+501,"802 - Skinner, Nikki",Nikki Skinner,0,22354,0.0,0.0
+502,"807 - Muhn, Maximilian",Maximilian Muhn,0,23530,0.0,0.0
+503,"809 - Kara, Mehmet",Mehmet Kara,0,20281,0.0,0.0
+504,"811 - Farnsel, Curtis",Curtis Farnsel,0,19338,0.0,0.0
+505,"813 - Shaffer, Matthew",Matthew Shaffer,0,29207,0.0,0.0
+506,"816 - de Kok, Ties",Ties De Kok,0,30320,0.0,0.0
+507,"818 - Ballew, Hailey",Hailey Ballew,0,22719,0.0,0.0
+508,"821 - Truong, Phong",Phong Truong,0,21350,0.0,0.0
+509,"822 - Wilhelm, James",James Wilhelm,0,18034,0.0,0.0
+510,"824 - Yoon, Hayoung",Hayoung Yoon,0,21728,0.0,0.0
+511,"827 - Huang, Disen",Disen Huang,0,20754,0.0,0.0
+512,"828 - Riggs-Cragun, Amoray",Amoray Riggs-Cragun,0,23659,0.0,0.0
+513,"830 - Hong, Min Jeong (Minna)",Min Jeong (Minna) Hong,0,21414,0.0,0.0
+514,"831 - Yu, Xiaoxiao",Xiaoxiao Yu,0,21755,0.0,0.0
+515,"832 - Peña-Romera, F. Dimas",F. Dimas PeñA-Romera,0,27786,0.0,0.0
+516,"834 - Navarro, Patricia",Patricia Navarro,0,20555,0.0,0.0
+517,"835 - MacKenzie, Nikki",Nikki Mackenzie,0,17754,0.0,0.0
+518,"841 - Kim, Jinhwan",Jinhwan Kim,0,23139,0.0,0.0
+519,"845 - Kartapanis, Antonis",Antonis Kartapanis,0,21496,0.0,0.0
+520,"851 - Alhusaini, Badryah",Badryah Alhusaini,0,21721,0.0,0.0
+521,"852 - Shi, Bei",Bei Shi,0,18322,0.0,0.0
+522,"853 - Sauciuc, Ashley",Ashley Sauciuc,0,18464,0.0,0.0
+523,"859 - Hudgins, Ryan",Ryan Hudgins,0,19781,0.0,0.0
+524,"860 - Chen, Huimin",Huimin Chen,0,22097,0.0,0.0
+525,"862 - Olczak, Wioleta",Wioleta Olczak,0,8200,0.0,0.0
+526,"864 - Lee, Jangwook",Jangwook Lee,0,20626,0.0,0.0
+527,"865 - Valentine, Kristen",Kristen Valentine,0,22598,0.0,0.0
+528,"867 - Raney, Robert",Robert Raney,0,25451,0.0,0.0
+529,"870 - Sinha, Roshan",Roshan Sinha,0,21157,1.0,0.0
+530,"871 - Nelson, Aaron",Aaron Nelson,0,19757,0.0,0.0
+531,"873 - Adams, Christina",Christina Adams,0,19994,0.0,0.0
+532,"889 - Deng, Junfang (Zero)",Junfang (Zero) Deng,0,24057,0.0,0.0
+533,"892 - Lu, Jinzhi",Jinzhi Lu,0,19812,0.0,0.0
+534,"901 - Anjum, Sanobar",Sanobar Anjum,0,12219,0.0,0.0
+535,"904 - Kepler, John",John Kepler,0,22411,0.0,0.0
+536,"905 - Traini, Simone",Simone Traini,0,23437,0.0,0.0
+537,"915 - Hou, Fangfang",Fangfang Hou,1,21144,0.0,0.0
+538,"916 - Smith, Mark",Mark Smith,0,23549,0.0,0.0
+539,"919 - Thompson, Dorothy",Dorothy Thompson,0,10657,0.0,0.0
+540,"924 - Bogachek, Olga",Olga Bogachek,0,23498,0.0,0.0
+541,"926 - Dube, Svenja",Svenja Dube,0,22991,0.0,0.0
+542,"928 - Jing, Jiao",Jiao Jing,0,21605,0.0,0.0
+543,"931 - Booker, Adam",Adam Booker,0,19968,0.0,0.0
+544,"934 - Land, Hunter",Hunter Land,0,24976,0.0,0.0
+545,"945 - Shi, Yuan",Yuan Shi,0,20647,0.0,0.0
+546,"946 - RUAN, LIJUN",Lijun Ruan,1,17282,0.0,0.0
+547,"947 - Fluharty, Andrew",Andrew Fluharty,0,19182,0.0,0.0
+548,"950 - Roeschley, Aaron",Aaron Roeschley,0,17850,0.0,0.0
+549,"951 - Liu, Rongbing",Rongbing Liu,0,21348,0.0,0.0
+550,"953 - Hou, Liya",Liya Hou,0,22675,0.0,0.0
+551,Kyunghwa yu,Kyunghwa Yu,0,5710,0.0,0.0
+552,Siddharth M. Bhambhwani,Siddharth M. Bhambhwani,0,24656,0.0,0.0
+553,bright yue hong,Bright Yue Hong,0,21173,0.0,0.0
+554,dai jiyuan,Dai Jiyuan,1,20468,0.0,0.0
+555,ding wenhong,Ding Wenhong,0,20742,0.0,0.0
+556,fan zhongwen,Fan Zhongwen,0,23079,0.0,0.0
+557,gao menghai,Gao Menghai,0,22988,0.0,0.0
+558,heejin ohn,Heejin Ohn,0,23172,0.0,0.0
+559,lin guoyu,Lin Guoyu,0,22798,0.0,0.0
+560,mark kim,Mark Kim,0,23784,0.0,0.0
+561,moon joon seok,Moon Joon Seok,0,19074,0.0,0.0
+562,nate nguyen,Nate Nguyen,0,23127,0.0,0.0
+563,sander de groote,Sander De Groote,0,7873,0.0,0.0
+564,terri xu,Terri Xu,0,18117,0.0,0.0
+565,wu xiaoxi,Wu Xiaoxi,0,20038,0.0,0.0
+566,yun lee,Yun Lee,0,28053,0.0,0.0
+567,zhang yan,Zhang Yan,0,20377,0.0,0.0
+568,zhu chengqi,Zhu Chengqi,0,31275,0.0,0.0
+569,zou yuan,Zou Yuan,0,23443,0.0,0.0

@@ -1,0 +1,37 @@
+/Users/xiaofeichen/opt/anaconda3/envs/myenv/lib/python3.10/site-packages/google/api_core/_python_version_support.py:273: FutureWarning: You are using a Python version (3.10.18) which Google will stop supporting in new releases of google.api_core once it reaches its end of life (2026-10-04). Please upgrade to the latest Python version, or at least Python 3.11, to continue receiving updates for google.api_core past that date.
+  warnings.warn(message, FutureWarning)
+/Users/xiaofeichen/Downloads/chenxiaofeiandongjunhui/verify_2017_ground_truth.py:5: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as genai
+
+==================================================
+ STAGE 1: 2017 GROUND TRUTH ANCHOR SEARCH
+==================================================
+Found 6 elite CSV profiles in 2017 cohort:
+  -> CSV ID 316: Gender=1.0, Coauthors=3.0, Placerank=10.0
+  -> CSV ID 318: Gender=1.0, Coauthors=7.0, Placerank=16.0
+  -> CSV ID 321: Gender=1.0, Coauthors=11.0, Placerank=0.0
+  -> CSV ID 324: Gender=0.0, Coauthors=6.0, Placerank=4.0
+  -> CSV ID 356: Gender=1.0, Coauthors=3.0, Placerank=2.0
+  -> CSV ID 423: Gender=0.0, Coauthors=6.0, Placerank=48.0
+
+Scanning 2017 Folders for Exact Feature Matches...
+  [Scan] Folder: 1387 - Yaqin Hu
+         Extracted PDF Features: Gender=1.0, Coauthors=3.0
+  >>> PERFECT MATCH: Folder '1387 - Yaqin Hu' uniquely maps to CSV ID 316!
+
+  [Scan] Folder: 1321 - Stephanie Cheng
+         Extracted PDF Features: Gender=0.0, Coauthors=4.0
+  >>> PERFECT MATCH: Folder '1321 - Stephanie Cheng' uniquely maps to CSV ID 295!
+
+==================================================
+ STAGE 2: 2018 PIPELINE AUDIT (candidate_mapping.csv)
+==================================================
+SUCCESS: 2018 Pipeline Audited. 131/131 Candidates perfectly matched their CSV IDs with ZERO indexing shift.
+
